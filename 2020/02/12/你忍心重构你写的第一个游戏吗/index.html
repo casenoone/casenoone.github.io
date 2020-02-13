@@ -307,16 +307,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -417,11 +407,8 @@
           
 
   
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
+ <div id="gitalk-container"></div>
+
 
   
 
@@ -695,49 +682,27 @@
 
 
 
-   
-   
-   
-   
-   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-   
-       <script type="text/javascript">
-           var gitment = new Gitment({
-              id: window.location.pathname, 
-               owner: '',
-               repo: '',
-               oauth: {
-                   client_id: '',
-                   client_secret: '',
-               }});
-           gitment.render('gitment-container');
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+		var gitalk = new Gitalk({
+		  clientID: '54e6430cf43fd375246c',
+		  clientSecret: 'b453c0c16f796924af0940130092499b93b8d60b',
+		  repo: 'casenoone.github.io',
+		  owner: 'casenoone',
+		  admin: ['casenoone'], 
+		  id: location.pathname,
+		  distractionFreeMode: 'true'
+		})
+		gitalk.render('gitalk-container')           
        </script>
-   
-
-
-
-
-
-   
-   
-   
-   
-   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-   
-       <script type="text/javascript">
-           var gitment = new Gitment({
-              id: window.location.pathname, 
-               owner: '',
-               repo: '',
-               oauth: {
-                   client_id: '',
-                   client_secret: '',
-               }});
-           gitment.render('gitment-container');
-       </script>
-   
 
 
 
