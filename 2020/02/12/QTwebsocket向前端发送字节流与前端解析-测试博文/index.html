@@ -315,8 +315,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2020/02/12/QTwebsocket向前端发送字节流与前端解析-测试博文/" itemprop="commentCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -434,12 +433,9 @@
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      
+        <div id="gitment-container"></div>
+      
     </div>
 
   
@@ -692,26 +688,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://best.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://casenoone.github.io/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/';
-          this.page.identifier = '2020/02/12/QTwebsocket向前端发送字节流与前端解析-测试博文/';
-          this.page.title = 'QTwebsocket向前端发送字节流与前端解析(测试博文)';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://best.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -724,6 +700,10 @@
   
 
 
+
+
+
+  
 
 
 
@@ -746,7 +726,7 @@
       function renderGitment(){
         var gitment = new Gitmint({
             id: window.location.pathname, 
-            owner: 'casenoone# MUST HAVE, Your Github ID',
+            owner: 'casenoone',
             repo: 'https://casenoone.github.io',
             
             lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
@@ -762,11 +742,7 @@
       }
 
       
-      function showGitment(){
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        renderGitment();
-      }
+      renderGitment();
       
       </script>
     

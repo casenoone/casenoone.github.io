@@ -310,8 +310,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2020/02/12/最小自然数原理证明数学归纳法/" itemprop="commentCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -402,12 +401,9 @@
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      
+        <div id="gitment-container"></div>
+      
     </div>
 
   
@@ -660,26 +656,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://best.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://casenoone.github.io/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/';
-          this.page.identifier = '2020/02/12/最小自然数原理证明数学归纳法/';
-          this.page.title = '最小自然数原理证明数学归纳法';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://best.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -692,6 +668,10 @@
   
 
 
+
+
+
+  
 
 
 
@@ -714,7 +694,7 @@
       function renderGitment(){
         var gitment = new Gitmint({
             id: window.location.pathname, 
-            owner: 'casenoone# MUST HAVE, Your Github ID',
+            owner: 'casenoone',
             repo: 'https://casenoone.github.io',
             
             lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
@@ -730,11 +710,7 @@
       }
 
       
-      function showGitment(){
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        renderGitment();
-      }
+      renderGitment();
       
       </script>
     
