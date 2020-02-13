@@ -307,6 +307,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/02/12/你忍心重构你写的第一个游戏吗/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -405,6 +416,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -656,6 +677,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://best.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://casenoone.github.io/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/';
+          this.page.identifier = '2020/02/12/你忍心重构你写的第一个游戏吗/';
+          this.page.title = '你忍心重构你写的第一个游戏吗';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://best.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -671,16 +712,34 @@
 
 
 
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-
-
-
-
-
-
-
-
-
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'mkgRsVY4i9vkfAE3llNeUaca-gzGzoHsz# your leancloud application appid',
+        appKey: 'B1rn9dmYEv76RvBkRF680ouK# your leancloud application appkey',
+        placeholder: '来了老弟',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

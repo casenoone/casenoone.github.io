@@ -264,6 +264,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -513,6 +523,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://best.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://casenoone.github.io/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/index.html';
+          this.page.identifier = '最小自然数原理证明数学归纳法/index.html';
+          this.page.title = '最小自然数原理证明数学归纳法';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://best.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -528,16 +558,34 @@
 
 
 
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-
-
-
-
-
-
-
-
-
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'mkgRsVY4i9vkfAE3llNeUaca-gzGzoHsz# your leancloud application appid',
+        appKey: 'B1rn9dmYEv76RvBkRF680ouK# your leancloud application appkey',
+        placeholder: '来了老弟',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
