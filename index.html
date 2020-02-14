@@ -488,6 +488,8 @@
 <summary></summary>
 
 <p>最近在写一个代码，实现前后端数据实时交互。后端开发使用QT的Qwebsocket模块。本来想使用json来收发数据，前后端解析起来也很方便，但是不知道json的效率会怎样，决定使用字节流来向前端发送数据。经过几天的探索，终于找到了方法，先上代码：</p>
+<p>1，后端部分代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> nVersion = <span class="number">1.12345678917</span>;</span><br><span class="line"><span class="keyword">double</span> dblValue = <span class="number">125.00008</span>;</span><br><span class="line">QByteArray baResult;<span class="comment">//串行化的流</span></span><br><span class="line"><span class="function">QDataStream <span class="title">dsOut</span><span class="params">(&amp;baResult, QIODevice::ReadWrite)</span></span>;  /作输出</span><br><span class="line">dsOut.setVersion(QDataStream::Qt_5_0);<span class="comment">//使用Qt 5.0 版本流</span></span><br><span class="line">dsOut&lt;&lt;nVersion&lt;&lt;dblValue;</span><br><span class="line">pClient-&gt;sendBinaryMessage(baResult);<span class="comment">//向前端发送baResult</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/#more" rel="contents">
