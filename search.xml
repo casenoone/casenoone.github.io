@@ -1,111 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Hexo与markdown使用总结</title>
-    <url>/2020/02/14/Hexo%E4%B8%8Emarkdown%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>使用博客，首先要打开命令行，切换到博客文件夹下。</p>
-<p>如何新建文章？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new 文章标题</span><br></pre></td></tr></table></figure>
-
-<p>如何上传修改后的博客？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p>如何打出上下角标？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上标：A（小于号）sup（大于号）2（小于号）&#x2F;sup（大于号）</span><br><span class="line">下标：sup换成sub</span><br><span class="line">&#x2F;&#x2F;用markdown语法的~A...这个会报错，原因我也不清楚</span><br></pre></td></tr></table></figure>
-
-<p>其他的想到再补充</p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>绝对音高+多普勒效应可以测出直升机的速度？</title>
+      <link href="/2020/02/15/%E7%BB%9D%E5%AF%B9%E9%9F%B3%E9%AB%98-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E5%8F%AF%E4%BB%A5%E6%B5%8B%E5%87%BA%E7%9B%B4%E5%8D%87%E6%9C%BA%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9F/"/>
+      <url>/2020/02/15/%E7%BB%9D%E5%AF%B9%E9%9F%B3%E9%AB%98-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E5%8F%AF%E4%BB%A5%E6%B5%8B%E5%87%BA%E7%9B%B4%E5%8D%87%E6%9C%BA%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9F/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo与markdown使用总结</title>
+      <link href="/2020/02/14/Hexo%E4%B8%8Emarkdown%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
+      <url>/2020/02/14/Hexo%E4%B8%8Emarkdown%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<p>使用博客，首先要打开命令行，切换到博客文件夹下。</p><p>如何新建文章？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 文章标题</span><br></pre></td></tr></table></figure><p>如何上传修改后的博客？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><a id="more"></a><p>如何打出上下角标？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">上标：A（小于号）sup（大于号）2（小于号）&#x2F;sup（大于号）</span><br><span class="line">下标：sup换成sub</span><br><span class="line">&#x2F;&#x2F;用markdown语法的~A...这个会报错，原因我也不清楚</span><br></pre></td></tr></table></figure><p>其他的想到再补充</p>]]></content>
+      
+      
       <categories>
-        <category>杂谈</category>
+          
+          <category> 杂谈 </category>
+          
       </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>最小自然数原理证明数学归纳法</title>
-    <url>/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/</url>
-    <content><![CDATA[<blockquote>
-<p>从逻辑的观点来说，注意到下面一点是很有趣的，即可以用最小自然数原理把数学归纳法当作一个定理来证明。对此让我们考虑任意一系列命题A<sub>1</sub>,A<sub>2</sub>,A<sub>3</sub>…,使得</p>
-<ol>
-<li>对任一正整数r, A<sub>r</sub>为真时能推出A<sub>r+1</sub>也为真;</li>
-<li>已知A<sub>1</sub>为真。</li>
-</ol>
-<p>我们将表明:“这些A中有一个不为真”这一假设是不对的。因为只要这些A中有一个不为真，则使得A<sub>n</sub>不为真的全体正整数集C就是不空的。按最小自然数原理，C包含一最小整数p，由2知p必须&gt;1。因此A不为真，但A<sub>p-1</sub>为真。这与1矛盾</p>
-</blockquote>
-<p>这是<code>《什么是数学》</code>一书中提到的一个问题，前段时间读到这里的时候，总觉得这段话读起来很拗口，今天终于想明白了，在梳理思路之前要先了解最小自然数原理和数学归纳法：</p>
-<a id="more"></a>
-
-<blockquote>
-<p><code>最小自然数原理</code>：1.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最小数；2.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最大数。</p>
-<p><code>数学归纳法</code>：1.证明当n = 1时命题成立。</p>
-<p>​                      2.假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立（m是任意自然数）</p>
-<p>​                      3.上面两步证明完毕后，即可推出对n取任意自然数时命题均成立。</p>
-</blockquote>
-<p>第一次学数学归纳法的时候，从直觉上来说感觉数学归纳法是自然成立的，但在数学上是需要证明的。下面对书中的证明过程做一些通俗的解释：</p>
-<p>当我在使用数学归纳法证明命题时，我经历了这样一个过程：</p>
-<ol>
-<li>我证明了n=1时命题成立</li>
-<li>我证明了“假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立”</li>
-<li>于是按照数学归纳法的步骤，我得出了所有命题均成立的结论。</li>
-</ol>
-<p>但是，所有命题一定都成立吗？直觉上来说是的，这就像是一套多米诺骨牌，我保证第一块牌一定可以倒下，我也能保证只要第n块牌倒下了，第n+1块牌也能倒下，于是，不管有多少块骨牌，它们都能倒下。但是，在数学上不能靠这种依靠直觉的方式去证明，不能通过有限的列举去证明无限的命题。<strong>所以应该通过否定有限去肯定无限的方法：</strong></p>
-<p>假设对于某些n，数学归纳法不成立，那么，这里面一定存在一个最小的数p，使得结论不成立（这里用到了最小自然数原理）。由于已知n=1时结论成立，因此P一定大于1，但当n=p时，结论恰好从这里开始就不成立了，那么往前一个位置n=p-1时，结论一定是成立的。所以这就与我们在数学归纳法中已经证明的第2步不符了，由此说明数学归纳法证明了所有命题均是真的。</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>最小自然数原理证明数学归纳法</title>
+      <link href="/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/"/>
+      <url>/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>从逻辑的观点来说，注意到下面一点是很有趣的，即可以用最小自然数原理把数学归纳法当作一个定理来证明。对此让我们考虑任意一系列命题A<sub>1</sub>,A<sub>2</sub>,A<sub>3</sub>…,使得</p><ol><li>对任一正整数r, A<sub>r</sub>为真时能推出A<sub>r+1</sub>也为真;</li><li>已知A<sub>1</sub>为真。</li></ol><p>我们将表明:“这些A中有一个不为真”这一假设是不对的。因为只要这些A中有一个不为真，则使得A<sub>n</sub>不为真的全体正整数集C就是不空的。按最小自然数原理，C包含一最小整数p，由2知p必须&gt;1。因此A不为真，但A<sub>p-1</sub>为真。这与1矛盾</p></blockquote><p>这是<code>《什么是数学》</code>一书中提到的一个问题，前段时间读到这里的时候，总觉得这段话读起来很拗口，今天终于想明白了，在梳理思路之前要先了解最小自然数原理和数学归纳法：</p><a id="more"></a><blockquote><p><code>最小自然数原理</code>：1.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最小数；2.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最大数。</p><p><code>数学归纳法</code>：1.证明当n = 1时命题成立。</p><p>​                      2.假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立（m是任意自然数）</p><p>​                      3.上面两步证明完毕后，即可推出对n取任意自然数时命题均成立。</p></blockquote><p>第一次学数学归纳法的时候，从直觉上来说感觉数学归纳法是自然成立的，但在数学上是需要证明的。下面对书中的证明过程做一些通俗的解释：</p><p>当我在使用数学归纳法证明命题时，我经历了这样一个过程：</p><ol><li>我证明了n=1时命题成立</li><li>我证明了“假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立”</li><li>于是按照数学归纳法的步骤，我得出了所有命题均成立的结论。</li></ol><p>但是，所有命题一定都成立吗？直觉上来说是的，这就像是一套多米诺骨牌，我保证第一块牌一定可以倒下，我也能保证只要第n块牌倒下了，第n+1块牌也能倒下，于是，不管有多少块骨牌，它们都能倒下。但是，在数学上不能靠这种依靠直觉的方式去证明，不能通过有限的列举去证明无限的命题。<strong>所以应该通过否定有限去肯定无限的方法：</strong></p><p>假设对于某些n，数学归纳法不成立，那么，这里面一定存在一个最小的数p，使得结论不成立（这里用到了最小自然数原理）。由于已知n=1时结论成立，因此P一定大于1，但当n=p时，结论恰好从这里开始就不成立了，那么往前一个位置n=p-1时，结论一定是成立的。所以这就与我们在数学归纳法中已经证明的第2步不符了，由此说明数学归纳法证明了所有命题均是真的。</p>]]></content>
+      
+      
       <categories>
-        <category>数学</category>
+          
+          <category> 数学 </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title>QTwebsocket向前端发送字节流与前端解析(测试博文)</title>
-    <url>/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/</url>
-    <content><![CDATA[<details>
-<summary></summary>
-
-<p>最近在写一个代码，实现前后端数据实时交互。后端开发使用QT的Qwebsocket模块。本来想使用json来收发数据，前后端解析起来也很方便，但是不知道json的效率会怎样，决定使用字节流来向前端发送数据。经过几天的探索，终于找到了方法，先上代码：</p>
-<p>1，后端部分代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> nVersion = <span class="number">1.12345678917</span>;</span><br><span class="line"><span class="keyword">double</span> dblValue = <span class="number">125.00008</span>;</span><br><span class="line">QByteArray baResult;<span class="comment">//串行化的流</span></span><br><span class="line"><span class="function">QDataStream <span class="title">dsOut</span><span class="params">(&amp;baResult, QIODevice::ReadWrite)</span></span>;  /作输出</span><br><span class="line">dsOut.setVersion(QDataStream::Qt_5_0);<span class="comment">//使用Qt 5.0 版本流</span></span><br><span class="line">dsOut&lt;&lt;nVersion&lt;&lt;dblValue;</span><br><span class="line">pClient-&gt;sendBinaryMessage(baResult);<span class="comment">//向前端发送baResult</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<p>2，前端代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">websocket.onmessage = function (evt) &#123;</span><br><span class="line">			</span><br><span class="line">	<span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">   	reader.readAsArrayBuffer(evt.data);</span><br><span class="line">   	reader.onload = function (e) &#123;</span><br><span class="line">   				</span><br><span class="line">   		<span class="keyword">var</span> dataview = <span class="keyword">new</span> DataView(reader.result);</span><br><span class="line">   		<span class="keyword">var</span> doubles = <span class="keyword">new</span> Float64Array(reader.result.byteLength / <span class="number">8</span>)</span><br><span class="line">   				</span><br><span class="line">   		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; doubles.length; i++) &#123;</span><br><span class="line">          		</span><br><span class="line">          	doubles[i] = dataview.getFloat64(i * <span class="number">8</span>); <span class="comment">// 每次提取一个double</span></span><br><span class="line">          	alert(doubles[i])</span><br><span class="line">        &#125; </span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>后端使用QDataStream进行串行化，得到一个QByteArray类型的变量，将其发给前端，从前端可以很容易地看出收到的数据类型是Blob类型，所以我们还要将Blob类型转为ArrayBuffer类型。关于ArrayBuffer的资料网上很多很多，这里就不提了。大致的意思就是：因为一个double类型占8个字节，所以我们按照8个8个来取，这样就能提取数据了。同样的，读者可以试试取出int型或者double、int混合起来的数据。至于效率究竟有没有json高，我还得研究一下。</p>
-</details>
-]]></content>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QTwebsocket向前端发送字节流与前端解析(测试博文)</title>
+      <link href="/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/"/>
+      <url>/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/</url>
+      
+        <content type="html"><![CDATA[<details><summary></summary><p>最近在写一个代码，实现前后端数据实时交互。后端开发使用QT的Qwebsocket模块。本来想使用json来收发数据，前后端解析起来也很方便，但是不知道json的效率会怎样，决定使用字节流来向前端发送数据。经过几天的探索，终于找到了方法，先上代码：</p><p>1，后端部分代码如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> nVersion = <span class="number">1.12345678917</span>;</span><br><span class="line"><span class="keyword">double</span> dblValue = <span class="number">125.00008</span>;</span><br><span class="line">QByteArray baResult;<span class="comment">//串行化的流</span></span><br><span class="line"><span class="function">QDataStream <span class="title">dsOut</span><span class="params">(&amp;baResult, QIODevice::ReadWrite)</span></span>;  /作输出</span><br><span class="line">dsOut.setVersion(QDataStream::Qt_5_0);<span class="comment">//使用Qt 5.0 版本流</span></span><br><span class="line">dsOut&lt;&lt;nVersion&lt;&lt;dblValue;</span><br><span class="line">pClient-&gt;sendBinaryMessage(baResult);<span class="comment">//向前端发送baResult</span></span><br></pre></td></tr></table></figure><p>2，前端代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">websocket.onmessage = function (evt) &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">   reader.readAsArrayBuffer(evt.data);</span><br><span class="line">   reader.onload = function (e) &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">var</span> dataview = <span class="keyword">new</span> DataView(reader.result);</span><br><span class="line">   <span class="keyword">var</span> doubles = <span class="keyword">new</span> Float64Array(reader.result.byteLength / <span class="number">8</span>)</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; doubles.length; i++) &#123;</span><br><span class="line">          </span><br><span class="line">          doubles[i] = dataview.getFloat64(i * <span class="number">8</span>); <span class="comment">// 每次提取一个double</span></span><br><span class="line">          alert(doubles[i])</span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a><p>后端使用QDataStream进行串行化，得到一个QByteArray类型的变量，将其发给前端，从前端可以很容易地看出收到的数据类型是Blob类型，所以我们还要将Blob类型转为ArrayBuffer类型。关于ArrayBuffer的资料网上很多很多，这里就不提了。大致的意思就是：因为一个double类型占8个字节，所以我们按照8个8个来取，这样就能提取数据了。同样的，读者可以试试取出int型或者double、int混合起来的数据。至于效率究竟有没有json高，我还得研究一下。</p></details>]]></content>
+      
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>websocket</tag>
-        <tag>数据交互</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>你会重构你写的第一个游戏吗</title>
-    <url>/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/</url>
-    <content><![CDATA[<p>不</p>
-<a id="more"></a>
-
-<p><a href="https://casenoone.github.io/a-game-about-sphere/html/%E5%88%86%E5%89%B2%E7%90%83%E7%90%83.html">https://casenoone.github.io/a-game-about-sphere/html/%E5%88%86%E5%89%B2%E7%90%83%E7%90%83.html</a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> websocket </tag>
+            
+            <tag> 数据交互 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>你会重构你写的第一个游戏吗</title>
+      <link href="/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/"/>
+      <url>/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/</url>
+      
+        <content type="html"><![CDATA[<p>不</p><a id="more"></a><p><a href="https://casenoone.github.io/a-game-about-sphere/html/%E5%88%86%E5%89%B2%E7%90%83%E7%90%83.html">https://casenoone.github.io/a-game-about-sphere/html/%E5%88%86%E5%89%B2%E7%90%83%E7%90%83.html</a></p>]]></content>
+      
+      
       <categories>
-        <category>游戏</category>
+          
+          <category> 游戏 </category>
+          
       </categories>
-      <tags>
-        <tag>游戏</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>写给23岁</title>
-    <url>/2020/02/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<a id="more"></a>
-
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 游戏 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>写给23岁</title>
+      <link href="/2020/02/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+      <url>/2020/02/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a>]]></content>
+      
+      
       <categories>
-        <category>杂谈</category>
+          
+          <category> 杂谈 </category>
+          
       </categories>
-  </entry>
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>

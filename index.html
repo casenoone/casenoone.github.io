@@ -426,6 +426,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://casenoone.github.io/2020/02/15/%E7%BB%9D%E5%AF%B9%E9%9F%B3%E9%AB%98-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E5%8F%AF%E4%BB%A5%E6%B5%8B%E5%87%BA%E7%9B%B4%E5%8D%87%E6%9C%BA%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我吃橘子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/15/%E7%BB%9D%E5%AF%B9%E9%9F%B3%E9%AB%98-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E5%8F%AF%E4%BB%A5%E6%B5%8B%E5%87%BA%E7%9B%B4%E5%8D%87%E6%9C%BA%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9F/" itemprop="url">绝对音高+多普勒效应可以测出直升机的速度？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-15T09:09:28+08:00">
+                2020-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/02/15/%E7%BB%9D%E5%AF%B9%E9%9F%B3%E9%AB%98-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E5%8F%AF%E4%BB%A5%E6%B5%8B%E5%87%BA%E7%9B%B4%E5%8D%87%E6%9C%BA%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9F/" class="leancloud_visitors" data-flag-title="绝对音高+多普勒效应可以测出直升机的速度？">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://casenoone.github.io/2020/02/14/Hexo%E4%B8%8Emarkdown%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -862,6 +992,9 @@
 <p>最近在写一个代码，实现前后端数据实时交互。后端开发使用QT的Qwebsocket模块。本来想使用json来收发数据，前后端解析起来也很方便，但是不知道json的效率会怎样，决定使用字节流来向前端发送数据。经过几天的探索，终于找到了方法，先上代码：</p>
 <p>1，后端部分代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> nVersion = <span class="number">1.12345678917</span>;</span><br><span class="line"><span class="keyword">double</span> dblValue = <span class="number">125.00008</span>;</span><br><span class="line">QByteArray baResult;<span class="comment">//串行化的流</span></span><br><span class="line"><span class="function">QDataStream <span class="title">dsOut</span><span class="params">(&amp;baResult, QIODevice::ReadWrite)</span></span>;  /作输出</span><br><span class="line">dsOut.setVersion(QDataStream::Qt_5_0);<span class="comment">//使用Qt 5.0 版本流</span></span><br><span class="line">dsOut&lt;&lt;nVersion&lt;&lt;dblValue;</span><br><span class="line">pClient-&gt;sendBinaryMessage(baResult);<span class="comment">//向前端发送baResult</span></span><br></pre></td></tr></table></figure>
+
+<p>2，前端代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">websocket.onmessage = function (evt) &#123;</span><br><span class="line">			</span><br><span class="line">	<span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">   	reader.readAsArrayBuffer(evt.data);</span><br><span class="line">   	reader.onload = function (e) &#123;</span><br><span class="line">   				</span><br><span class="line">   		<span class="keyword">var</span> dataview = <span class="keyword">new</span> DataView(reader.result);</span><br><span class="line">   		<span class="keyword">var</span> doubles = <span class="keyword">new</span> Float64Array(reader.result.byteLength / <span class="number">8</span>)</span><br><span class="line">   				</span><br><span class="line">   		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; doubles.length; i++) &#123;</span><br><span class="line">          		</span><br><span class="line">          	doubles[i] = dataview.getFloat64(i * <span class="number">8</span>); <span class="comment">// 每次提取一个double</span></span><br><span class="line">          	alert(doubles[i])</span><br><span class="line">        &#125; </span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/#more" rel="contents">
@@ -1105,7 +1238,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
