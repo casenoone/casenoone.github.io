@@ -383,9 +383,7 @@
 </ol>
 <p>我们将表明:“这些A中有一个不为真”这一假设是不对的。因为只要这些A中有一个不为真，则使得A<sub>n</sub>不为真的全体正整数集C就是不空的。按最小自然数原理，C包含一最小整数p，由2知p必须&gt;1。因此A不为真，但A<sub>p-1</sub>为真。这与1矛盾</p>
 </blockquote>
-<p>这是<code>《什么是数学》</code>一书中提到的一个问题，前段时间读到这里的时候，总觉得这段话读起来很拗口，今天终于想明白了，在梳理思路之前要先了解最小自然数原理和数学归纳法：</p>
-<a id="more"></a>
-
+<p>这是<code>《什么是数学》</code>一书中提到的一个问题，前段时间读到这里的时候，总觉得这段话读起来很拗口，今天终于想明白了，在梳理思路之前要先了解最小自然数原理和数学归纳法：<br><a id="more"></a></p>
 <blockquote>
 <p><code>最小自然数原理</code>：1.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最小数；2.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最大数。</p>
 <p><code>数学归纳法</code>：1.证明当n = 1时命题成立。</p>
@@ -520,7 +518,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1209,6 +1207,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

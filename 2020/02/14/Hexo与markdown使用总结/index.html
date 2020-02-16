@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="使用博客，首先要打开命令行，切换到博客文件夹下。 如何新建文章？ 1hexo new 文章标题  如何上传修改后的博客？ 123hexo cleanhexo ghexo d">
+<meta name="description" content="使用博客，首先要打开命令行，切换到博客文件夹下。 如何新建文章？ 1hexo new 文章标题 如何上传修改后的博客？ 123hexo cleanhexo ghexo d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo与markdown使用总结">
 <meta property="og:url" content="https://casenoone.github.io/2020/02/14/Hexo%E4%B8%8Emarkdown%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="我吃橘子">
-<meta property="og:description" content="使用博客，首先要打开命令行，切换到博客文件夹下。 如何新建文章？ 1hexo new 文章标题  如何上传修改后的博客？ 123hexo cleanhexo ghexo d">
+<meta property="og:description" content="使用博客，首先要打开命令行，切换到博客文件夹下。 如何新建文章？ 1hexo new 文章标题 如何上传修改后的博客？ 123hexo cleanhexo ghexo d">
 <meta property="article:published_time" content="2020-02-14T07:10:43.000Z">
 <meta property="article:modified_time" content="2020-02-14T07:24:36.433Z">
 <meta property="article:author" content="Zhang Jian">
@@ -379,15 +379,11 @@
         <p>使用博客，首先要打开命令行，切换到博客文件夹下。</p>
 <p>如何新建文章？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 文章标题</span><br></pre></td></tr></table></figure>
-
 <p>如何上传修改后的博客？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <p>如何打出上下角标？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">上标：A（小于号）sup（大于号）2（小于号）&#x2F;sup（大于号）</span><br><span class="line">下标：sup换成sub</span><br><span class="line">&#x2F;&#x2F;用markdown语法的~A...这个会报错，原因我也不清楚</span><br></pre></td></tr></table></figure>
-
 <p>其他的想到再补充</p>
 
       
@@ -514,7 +510,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1203,6 +1199,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
