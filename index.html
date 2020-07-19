@@ -378,7 +378,7 @@
           
             <p>有好几个月没有更新博客了！</p>
 <p>这篇文章本来是在2月12号要写的，结果一直拖到今天。但是2月12号是个值得纪念的日子，因为这一天我搭建好了我的博客，哈哈哈。所以，文章发表日期不改了，但要知道，这篇文章是写于2020年6月11号。</p>
-<p>23岁，我收到的最好的两件礼物，就是本科毕业，还有考研上岸。我还记得大一上学期的时候，我在图书馆二楼的计算机室，看着那些让我羡慕的知识和技术，心里只能感叹：唉，以后只能去挖煤了。命运弄人，大二的一次偶然，被同学拉到老师那儿去，阴差阳错的就敲起了代码，又阴差阳错的做起了图形学。我同学，还有我老师，是我生命中的贵人。</p>
+<p>23岁，我收到的最好的两件礼物，就是本科毕业，还有考研上岸。我还记得大一上学期的时候，我在图书馆二楼的计算机室，看着那些让我羡慕的知识和技术，心里只能感叹：唉，以后只能去挖煤了。命运弄人，大二的一次偶然，被同学拉到老师那儿去，阴差阳错的就敲起了代码。我同学，还有我老师，是我生命中的贵人。</p>
 <p>19岁到23岁，这四年变化太大了。最大的改变就是对知识的态度。以前我从来不会想过，我会对一个频繁使用到数学的学科产生兴趣。我一直也不够自信，觉得自己理科思维不好，不适合学数学。但是现在，我会说，呵呵，老子开心就好！</p>
 <p>懒得回顾过去四年了，我就回顾最近一年的事情。</p>
 <p>过去一年大部分时间在备考，感悟只有一个字：累！其他的也不想写了。最近半年，心态也发生了变化，自从开始练习正念冥想，看了哈佛积极心理学之后，整个人的变化特别大。希望未来能够坚持下去。</p>
@@ -432,7 +432,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://casenoone.github.io/2020/07/11/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/">
+    <link itemprop="mainEntityOfPage" href="https://casenoone.github.io/2020/07/20/ALGORITHM%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang Jian">
@@ -451,7 +451,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/11/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/" itemprop="url">计算共形几何笔记(1)</a></h1>
+                <a class="post-title-link" href="/2020/07/20/ALGORITHM%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/" itemprop="url">ALGORITHM（翻译）</a></h1>
         
 
         <div class="post-meta">
@@ -463,8 +463,158 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T22:08:54+08:00">
-                2020-07-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T07:13:28+08:00">
+                2020-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/20/ALGORITHM%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/" class="leancloud_visitors" data-flag-title="ALGORITHM（翻译）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>MARCHING CUBES: A HIGH RESOLUTION 3D SURFACE CONSTRUCTION ALGORITHM（翻译）</p>
+<blockquote>
+<p><strong>Abstract</strong></p>
+<p>​ We present a new algorithm, called  marching cubes,  that creates triangle models of constant density surfaces from 3D medical data. Using a divide-and-conquer approach to generate inter-slice connectivity, we create a case table that defines triangle topology. The algorithm processes the 3D<br>medical data in scan-line order and calculates triangle vertices using linear interpolation. We find the gradient of the original data, normalize it, and use it as a basis for shading the models. <u>The detail in images produced from the generated surface models is the result of maintaining the inter-slice</u><br><u>connectivity, surface data, and gradient information presentin the original 3D data.</u> Results from computed tomography(CT), magnetic resonance (MR), and single-photon emission computed tomography (SPECT) illustrate the quality and functionality of  marching cubes.  We also discuss improvements that decrease processing time and add solid modeling capabilities.</p>
+</blockquote>
+<p><strong>摘要</strong></p>
+<p>​   我们提出一种新的算法，称之为marching cubes，这个算法利用3D医学数据生成了等密度表面(constant density surface)的三角形模型。通过使用分而治之的方法，我们创建了一个定义了三角形的拓扑结构的情况表(case table)。这个算法按照扫描行(scan-line)的的次序加工3D医学数据，使用线性插值法(linear interpolation)计算三角形的顶点。我们求出原始数据的梯度(gradient)，将其单位化，并且将其作为模型着色的基础。<u>来自生成表面模型的图片中的细节，是保持片间连通性(inter-slice connectivity)，表面数据，和presentin（没查到这个词）原始3D数据梯度的结果。</u> CT、MR、SPECT得到的结果说明了marching cube算法的质量和功能性。我们同样也讨论了在减少加工时间、提高稳定的建模能力这方面的提高。</p>
+<blockquote>
+<ol>
+<li><p><strong>INTRODUCTION.</strong><br>Three-dimensional surfaces of the anatomy offer a valuable medical tool.  Images of these surfaces, constructed from multiple 2D slices of computed tomography (CT), magnetic resonance (MR), and single-photon emission computed tomography (SPECT), help physicians to understand the complex anatomy present in the slices. Interpretation of 2D medical images requires special training, and although radiologists have these skills, they must often communicate their<br>interpretations to the referring physicians, who sometimes have difficulty visualizing the 3D anatomy. </p>
+<p>​  Researchers have reported the application of 3D medical images in a variety of areas. The visualization of complex acetabular fractures [6], craniofacial abnormalities [17,18], and intracranial structure [13] illustrate 3D’s potential for the study of complex bone structures. Applications in radiationtherapy [27,11] and surgical planning [4,5,31] show interactive 3D techniques combined with 3D surface images. Cardiac applications include artery visualization [2,16] and nongraphic modeling applications to calculate surface area and volume [21]. </p>
+<p>​  Existing 3D algorithms lack detail and sometimes introduce artifacts. We present a new, high-resolution 3D surface construction algorithm that produces models with unpre- cedented detail. This new algorithm, called  marching cubes, creates a polygonal representation of constant density surfaces from a 3D array of data. The resulting model can be displayed with conventional graphics-rendering algorithms implemented in software or hardware. </p>
+<p>​  After describing the information flow for 3D medical applications, we describe related work and discuss the drawbacks of that work. <u>Then we describe the algorithm as well as efficiency and functional enhancements, followed by case studies using three different medical imaging techniques to illustrate the new algorithm’s capabilities.</u></p>
+</li>
+</ol>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/20/ALGORITHM%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://casenoone.github.io/2020/07/18/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我吃橘子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/18/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/" itemprop="url">计算共形几何笔记(1)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T22:08:54+08:00">
+                2020-07-18
               </time>
             
 
@@ -503,7 +653,7 @@
 
           
           
-             <span id="/2020/07/11/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/" class="leancloud_visitors" data-flag-title="计算共形几何笔记(1)">
+             <span id="/2020/07/18/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/" class="leancloud_visitors" data-flag-title="计算共形几何笔记(1)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -536,14 +686,10 @@
       
         
           
-            <p>再三犹豫，还是决定把《计算共形几何》这门课听下去。考虑到以后可能会做虚拟现实，会用到这个东西。除此之外，其实也是对自己的一次宣战吧！一直以来，数学差似乎成了我的标签，我不喜欢被标签所束缚。我不奢求自己能证明出什么定理来，我不需要做到这个，但是我要求自己要能够使用数学去解决问题，至少从直觉上理解它们。恰好共形几何这门课强调的是直觉上的理解。</p>
-<p>所以，不管听懂听不懂，我都要坚持学完，并且实现相应的代码。这门课时间跨度比较大，要持续到9月份。我估计我得听到十月份或者更多的时间。</p>
-<p>今天是学共形几何的第二天，感觉很差劲。但是正如顾险峰老师所说：</p>
-<blockquote>
-<p>现代拓扑几何自然有深度。如果你觉得学得轻松，那也意味着没有学到什么真东西，一切还在旧的知识结构里面，那又有什么意义？如果学的东西超出以往的认知范围，这才是值得学习的。</p>
-</blockquote>
-<p>特意把这段话打出来，我想学任何东西都要抱这样的态度，不怕难，要挑战自己的舒适区。</p>
-<p>笔记是这样计划的：每听完一节课，把主体内容搞明白了，就开始梳理，做笔记。留下一些疑点也要做记录，到时候去微信群里请教。</p>
+            <p>​   果不其然，这门课的难度远远超过我的承受能力。以前觉得高数难，觉得线代难，但是那种难，只是想不到思路，翻看答案还是能想通的，至少我觉得那是符合我的认知的。共形几何这门课，每一个知识点都很抽象，只有少部分可以有一个直观印象，大部分都是听不懂的，并且在我脑子里毫无逻辑可循。课程前言说，只需具备多元微积分、线性代数的基础即可，我真有点怀疑这要求是不太低了…</p>
+<p>​   本来想做点笔记，可是这几节课听下来，似乎又没什么可记的，因为大部分内容没听懂，只能记一些直觉上理解了的东西了。作业做起来也有点费力，但是作业给了算法步骤，只需要写代码，作业难住我的还是C++…</p>
+<p>​   不过，管它呢，难就难了，这是前沿学科，怎么可能不难。反正暑假漫长，可能这也是最后一个长时间的假期了，错过这个假期再也没机会纯粹的去学一门课。就算内容学不懂，至少在几何方面会有一些了解。就当作是一次快乐的游戏吧!   </p>
+<p>​   作业一没什么记录的，作业二还没做完，作业二是一个求解几何偏微分方程的东西，这玩意儿目前也不懂，就先把算法流程搞清楚吧！课程内容方面的笔记下次再写。</p>
 
           
         
@@ -1439,7 +1585,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
