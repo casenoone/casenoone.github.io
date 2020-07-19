@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="MARCHING CUBES: A HIGH RESOLUTION 3D SURFACE CONSTRUCTION ALGORITHM（翻译）  Abstract ​ We present a new algorithm, called  marching cubes,  that creates triangle models of constant density surfaces from">
+<meta name="description" content="INFORMATION FLOW FOR 3D MEDICAL ALGORITHMS.Medical applications of 3D consist of four steps (Figure 1). Although one can combine the last three steps into one algorithm, we logically decompose the p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ALGORITHM（翻译）">
 <meta property="og:url" content="https://casenoone.github.io/2020/07/20/ALGORITHM%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/index.html">
 <meta property="og:site_name" content="我吃橘子">
-<meta property="og:description" content="MARCHING CUBES: A HIGH RESOLUTION 3D SURFACE CONSTRUCTION ALGORITHM（翻译）  Abstract ​ We present a new algorithm, called  marching cubes,  that creates triangle models of constant density surfaces from">
+<meta property="og:description" content="INFORMATION FLOW FOR 3D MEDICAL ALGORITHMS.Medical applications of 3D consist of four steps (Figure 1). Although one can combine the last three steps into one algorithm, we logically decompose the p">
 <meta property="article:published_time" content="2020-07-19T23:13:28.000Z">
-<meta property="article:modified_time" content="2020-07-19T23:29:58.825Z">
+<meta property="article:modified_time" content="2020-07-19T23:35:57.530Z">
 <meta property="article:author" content="Zhang Jian">
 <meta name="twitter:card" content="summary">
 
@@ -353,35 +353,18 @@
       
 
       
-        <p>MARCHING CUBES: A HIGH RESOLUTION 3D SURFACE CONSTRUCTION ALGORITHM（翻译）</p>
-<blockquote>
-<p><strong>Abstract</strong></p>
-<p>​ We present a new algorithm, called  marching cubes,  that creates triangle models of constant density surfaces from 3D medical data. Using a divide-and-conquer approach to generate inter-slice connectivity, we create a case table that defines triangle topology. The algorithm processes the 3D<br>medical data in scan-line order and calculates triangle vertices using linear interpolation. We find the gradient of the original data, normalize it, and use it as a basis for shading the models. <u>The detail in images produced from the generated surface models is the result of maintaining the inter-slice</u><br><u>connectivity, surface data, and gradient information presentin the original 3D data.</u> Results from computed tomography(CT), magnetic resonance (MR), and single-photon emission computed tomography (SPECT) illustrate the quality and functionality of  marching cubes.  We also discuss improvements that decrease processing time and add solid modeling capabilities.</p>
-</blockquote>
-<p><strong>摘要</strong></p>
-<p>​   我们提出一种新的算法，称之为marching cubes，这个算法利用3D医学数据生成了等密度表面(constant density surface)的三角形模型。通过使用分而治之的方法，我们创建了一个定义了三角形的拓扑结构的情况表(case table)。这个算法按照扫描行(scan-line)的的次序加工3D医学数据，使用线性插值法(linear interpolation)计算三角形的顶点。我们求出原始数据的梯度(gradient)，将其单位化，并且将其作为模型着色的基础。<u>来自生成表面模型的图片中的细节，是保持片间连通性(inter-slice connectivity)，表面数据，和presentin（没查到这个词）原始3D数据梯度的结果。</u> CT、MR、SPECT得到的结果说明了marching cube算法的质量和功能性。我们同样也讨论了在减少加工时间、提高稳定的建模能力这方面的提高。</p>
-<blockquote>
-<ol>
-<li><p><strong>INTRODUCTION.</strong><br>Three-dimensional surfaces of the anatomy offer a valuable medical tool.  Images of these surfaces, constructed from multiple 2D slices of computed tomography (CT), magnetic resonance (MR), and single-photon emission computed tomography (SPECT), help physicians to understand the complex anatomy present in the slices. Interpretation of 2D medical images requires special training, and although radiologists have these skills, they must often communicate their<br>interpretations to the referring physicians, who sometimes have difficulty visualizing the 3D anatomy. </p>
-<p>​  Researchers have reported the application of 3D medical images in a variety of areas. The visualization of complex acetabular fractures [6], craniofacial abnormalities [17,18], and intracranial structure [13] illustrate 3D’s potential for the study of complex bone structures. Applications in radiationtherapy [27,11] and surgical planning [4,5,31] show interactive 3D techniques combined with 3D surface images. Cardiac applications include artery visualization [2,16] and nongraphic modeling applications to calculate surface area and volume [21]. </p>
-<p>​  Existing 3D algorithms lack detail and sometimes introduce artifacts. We present a new, high-resolution 3D surface construction algorithm that produces models with unpre- cedented detail. This new algorithm, called  marching cubes, creates a polygonal representation of constant density surfaces from a 3D array of data. The resulting model can be displayed with conventional graphics-rendering algorithms implemented in software or hardware. </p>
-<p>​  After describing the information flow for 3D medical applications, we describe related work and discuss the drawbacks of that work. <u>Then we describe the algorithm as well as efficiency and functional enhancements, followed by case studies using three different medical imaging techniques to illustrate the new algorithm’s capabilities.</u></p>
-</li>
-</ol>
-</blockquote>
-<p>1.<strong>介绍</strong></p>
-<p>​   解剖得到的三维表面为医疗行业提供了有力的工具。这些表面的图像是由许多2D切片构造的，2D切片由CT、MR、SPECT等技术得到。他们可以帮助医生理解切片中复杂的解剖结构。放射科医生要经过特殊的训练才能对2D医疗图像作出解读，尽管他们具有这种技能，但是他们经常需要与主治医生交流这些解读，有时医生很难想象这种3D的解剖结构。</p>
-<p>​   研究者们把3D医疗图像的应用输出到各个领域。复杂的髋臼骨折，颅面异常，颅内结构的可视化阐明了3D技术用于研究复杂骨结构的可能性。放射治疗和手术计划展示了结合3D表面图像的交互式技术的应用。心脏应用程序包括动脉可视化和非图形建模，它们被用于计算表面积和体积。</p>
-<p>​   当前存在的3D算法缺乏细节，有时候还需要人工介绍。我们发明了一种新的高效求解3D表面构造的算法，它可以生成有unpre-cedented细节的模型。新的算法就叫做marching cubes，它可以生成由一组数据构造的等密度表面的多边形表示。得到的模型可以在软件或硬件上使用传统的图形渲染方法去显示。</p>
-<p>​   在描述了三维医学应用的信息流后，我们先讲讲与此相关的工作并且讨论这些工作的缺点。<u>然后我们会描述这个算法高效性和功能的提升，接下来是案例研究，使用三个不同的医学图像技术去阐述新算法的工作能力。</u></p>
-<blockquote>
+        <blockquote>
 <ol>
 <li><p><strong>INFORMATION FLOW FOR 3D MEDICAL ALGORITHMS.</strong><br>Medical applications of 3D consist of four steps (Figure 1). Although one can combine the last three steps into one algorithm, we logically decompose the process as follows:</p>
 <ol>
 <li><p>Data acquisition.<br><u>This first step, performed by the medical imaging hardware, samples some property in a patient and produces multiple 2D slices of information.</u> The data sampled depends on the data acquisition technique. <u>X-ray computed tomography (CT) measures the spatially varying X-ray attenuation coefficient [3],</u>  CT images show internal structure.  <u>For 3D applications, CT is frequently used to look at bone structure, although we have had success visualizing soft tissue.</u></p>
 <p>​   Magnetic resonance (MR) measures three physical properties [20]. One property is the distribution of “mobile” hydrogen nuclei and shows overall structure within the slices.  The  other two properties measure relaxation times of the nuclei. MR, a recent technique, shows excellent contrast between a variety of soft tissues.  However, the variety of surfaces presents a challenge to 3D surface construction and requires techniques for selective surface extraction and display.</p>
-<p>​    A third acquisition technique, single-photon emission computed tomography (SPECT) measures the emission of gamma rays [24].  The source of these rays is a radioisotope distributed within the body.  In addition to structure, SPECT can show the presence of blood in<br>structures with a much lower dose than that required by CT.</p>
+<p>​    A third acquisition technique, single-photon emission computed tomography (SPECT) measures the emission of gamma rays [24].  The source of these rays is a radioisotope distributed within the body.  In addition to structure, SPECT can show the presence of blood in structures with a much lower dose than that required by CT.</p>
 </li>
+</ol>
+</li>
+</ol>
+<ol>
 <li><p>Image processing.</p>
 <pre><code>Some algorithms use image processing techniques to find structures within the 3D data [1,32,30,29] or to filter the original data.  MR data, in particular, needs image processing to select appropriate structure.
 </code></pre></li>
@@ -389,64 +372,10 @@
 <pre><code>Surface construction, the topic of this paper, involves the creation of a surface model from the 3D data. The model usually consists of 3D volume elements (voxels) or polygons. Users select the desired surface by specifying a density value. &lt;u&gt;This step can also include the creation of cut or capped surfaces.&lt;/u&gt;
 </code></pre></li>
 <li><p>Display.</p>
-<pre><code>Having created the surface, the final step displays that surface using display techniques that include ray casting, &lt;u&gt;depth shading, and color shading.&lt;/u&gt;
+<pre><code>Having created the surface, the final step displays that surface using display techniques that include ray casting, &lt;u&gt;depth shading, and color shading.
 </code></pre></li>
 </ol>
-</li>
-</ol>
 </blockquote>
-<p>2.<strong>3D医学算法信息流</strong></p>
-<p>3D医学应用由以下四部分组成。尽管我们可以把后面三部分合并成一个算法，但我们在逻辑上把它分解为以下过程：</p>
-<ol>
-<li><p>数据获取</p>
-<p>​   第一步，在医学图像处理硬件上执行，在病人身上采样一些<u>property</u>，并且制作大量的2D信息切片。数据采集依赖于数据获取技术。<u>CT测量了X光线的衰减系数在空间中的变化，</u>CT图像可以显示内部结构。<u>在3D应用中，尽管我们将软组织成功的可视化，CT经常被用来检查骨结构。</u></p>
-<p>MR测量了三个物理属性，一个是”mobile” hydrogen nuclei的分布并且展示了切片内部的所有结构。其他两个属性是原子核的弛豫时间。MR是一个新兴技术，它可以在各种软组织之间做出极好的对比。然而，各种各样的表面对3D表面构造提出了挑战，而且需要一个能够将选择的表面抽出并且显示它们的技术。</p>
-<p>第三个获取技术就是SPECT，它能够测量伽马射线的放射。这些射线来源于分布在人体内部的放射性同位素。除了结构之外，SPECT可以以比CT所需低得多的剂量去展示结构中的血液。</p>
-</li>
-<li><p>图像加工</p>
-<p>​   有些算法使用图像加工技术去找3D数据内部蕴含的结构，或者是过滤原始数据。尤其是MR的数据，需要通过图像加工去选择合适的结构。</p>
-</li>
-<li><p>表面构造</p>
-<p>​   表面构造是本文的主题，包含了利用3D数据去生成表面模型。这些模型通常都是由体素或者是多边形构成。用户可以通过指定密度值去获得期望的表面。<u>这一步同样包括切割或封顶表面的操作。</u></p>
-</li>
-<li><p>显示</p>
-<p>得到表面之后，最后一步就是通过光线投射、<u>depth shading、和 color shading</u>的绘制方法去显示模型。</p>
-</li>
-</ol>
-<blockquote>
-<ol>
-<li><p><strong>RELATED WORK.</strong></p>
-<p>​  There are several approaches to the 3D surface generation problem. <u>An early technique [23] starts with contours of the surface to be constructed and connects contours on consecutive slices with triangles.</u>  Unfortunately, if more than one contour of surface exists on a slice, ambiguities arise when determining which contours to connect [14]. Interactive intervention by the user can overcome some of these ambiguities [8]; however, in a clinical environment, user interaction<br>should be kept to a minimum.</p>
-<p>​  Another approach, developed by G. Herman and colleagues [19] creates surfaces from cuberilles.  A cuberille is “dissection of space into equal cubes (called voxels) by three orthogonal sets of parallel planes [7].” <u>Although there are many ways to display a cuberille model, the most realistic images result when the gradient, calculated from cuberilles in a neighborhood, is used to find the shade of a point on the model [15].</u> Meagher [25] uses an octree representation to compress the storage of the 3D data, <u>allowing rapid manipulation and display of voxels.</u> Farrell [12] uses ray casting to find the 3D surface, but rather than shade the image with a gray scale, uses hue lightness to display the surface.  In another ray casting method, Hohne [22], after locating the surface along a ray, calculates the gradient along the surface and uses this gradient, scaled by an “appropriate” value, to generate gray scales for the image. </p>
-<p>​  Farrell [12] uses ray casting to find the 3D surface, but rather than shade the image with a gray scale, uses hue lightness to display the surface.  In another ray casting method, Hohne [22], after locating the surface along a ray, calculates the gradient along the surface and uses this gradient, scaled by an “appropriate” value, to generate gray scales for the image.</p>
-<p>​  A different approach, used at the Mayo Clinic [26], displays the density volume rather than the   surface.  This method produces, in effect, a conventional shadow graph that can be viewed from arbitrary angles.  <u>Motion enhances the  three-dimensional  effect obtained  using  the  volume model.</u></p>
-<p>​  Each of these techniques for surface construction and display suffer shortcomings because they throw away useful information in the original data. The connected contour algorithms throw away the inter-slice connectivity that exists in the original data. The cuberille approach, using thresholding to represent the surface as blocks in 3D space, attempts to recover shading information from the blocks.  The ray casting methods either use depth shading alone, or try to approximate shading with an unnormalized gradient.  <u>Since they display all values and not just those visible from a given point of view, volume models rely on motion to produce a three-dimensional sensation.</u></p>
-<p>​  Our approach uses information from the original 3D data to derive inter-slice connectivity, surface location, and surface gradient. The resulting triangle model can be displayed on conventional graphics display systems using standard rendering algorithms.</p>
-</li>
-</ol>
-</blockquote>
-<p>3<strong>.相关工作</strong></p>
-<p>​   这里有一些构造3D表面的常用方法。<u>早期的始于表面等高线的构造，并且是在连续的三角形切片上连接等高线的。</u>不幸的是，如果切片上存在超过一个的表面等高线，当要决定用哪一个去连接的时候，就可能会产生歧义。通过用户的交互式干预行为，可以克服一些歧义。然而，在临床环境下，用户的交互行为的次数应该保持最小量。</p>
-<p>​   另外一个方法，是生成一个来自cuberilles的表面，这个方法是由 G. Herman和他的同事提出的。这个cuberilles就是把空间划分为一个等价的立方体，它是由三组平行的平面正交而来的。尽管有很多显示cuberilles模型的方法，但是最具真实感的方法是，计算与cuberilles相邻的cuberilles的梯度（gradient），它被用来去寻找模型上的着色点。Meagher使用八叉树的描述方法去压缩3D数据的存储，<u>它允许快速操作和体素的显示。</u>Farrell 使用光线投射法去寻找3D表面，但不是用灰度着色，而是用色调着色去显示表面。在另外一种光线投射法中，在沿着光线定位表面之后，去计算沿着表面的梯度，并且使用一个恰当的值去缩放这个梯度，生成一个灰色标（gray scales）的图像。</p>
-<pre><code>Mayo Clinic使用了一种不同的方法，它显示体积密度（density volume）而不是表面。这种方法的过程实际上是一种传统的阴影图，其可以以任意角度去观察。&lt;u&gt;运动增强了...&lt;/u&gt;
-</code></pre><p>​   这些表面构造和显示的方法都有不足之处，他们丢失了原始数据中的有用数据。连接等高线算法（connected contour algorithms）丢失了原始数据中的内部切片连通性（inter-slice connectivity）。cuberille 方法使用阈值转换法在3D空间中将表面看作块（block），试图从块中恢复着色信息（shading information）。光线投射法要么使用深度着色，要么使用未单位化的梯度近似着色。它们显示了所有的值，不仅仅是给定视点观察到的，体模依赖于运动去制造三维感觉。</p>
-<p>​   我们的方法使用原始3D数据去驱动内部切片的连通性，表面位置，表面梯度。得到的三角形模型可以通过传统图形显示系统，使用标准渲染算法进行显示。</p>
-<blockquote>
-<ol>
-<li><strong>MARCHING  CUBES ALGORITHM.</strong><br><u>There are two primary steps in our approach to the surface construction  problem.</u>  First,  we locate the surface corresponding to a user-specified value and create triangles. Then, to ensure a quality image of the surface, we calculate the normals to the surface at each vertex of each triangle.</li>
-</ol>
-<p>​ Marching cubes  uses a divide-and-conquer approach to locate the surface in a logical  cube  created from eight pixels; <u>four each from two adjacent slices (Figure 2).</u></p>
-<p>​ The algorithm determines how the surface intersects this cube, then moves (or  marchs)  to the next cube. <u>To find the surface intersection in a cube, we assign a one to a cube’s vertex if the data value at that vertex exceeds (or equals) the value of the surface we are constructing</u>. These vertices are inside (or on) the surface. <u>Cube vertices with values below the surface receive a zero and are outside the surface</u>.  <u>The surface intersects those cube edges where one vertex is outside the surface (one) and the other is inside the surface (zero)</u>. With this assumption, we determine the topology of the surface within a cube, finding the location of the intersection later.</p>
-<p>​ Since there are eight vertices in each cube and <u>two slates</u>, inside and outside, there are only 28 = 256 ways a surface can intersect the cube. By enumerating these 256 cases, we create a table to look up surface-edge intersections, given the labeling of a cubes vertices. The table contains the edges intersected for each case.</p>
-<p>​ Triangulating the 256 cases is possible but tedious and error-prone.  Two different symmetries of the cube reduce the problem from 256 cases to 14 patterns. First, the topology of the triangulated surface is unchanged if the relationship of the surface values to the cubes is reversed. Complementary cases, where vertices greater than the surface value are interchanged with those less than the value, are equivalent. Thus, only cases with zero to four vertices greater than the<br>surface value need be considered, reducing the number of cases to 128. Using the second symmetry property, rotational symmetry, we reduced the problem to 14 patterns by inspection.  Figure 3 shows the triangulation for the 14 patterns.</p>
-<p>​ The simplest pattern, 0, occurs if all vertex values are above (or below) the selected value and produces no triangles. The next pattern, 1, occurs if the surface separates on vertex from the other seven, resulting in one triangle defined by the three edge intersections. Other patterns produce multiple triangles. Permutation of these 14 basic patterns using complementary and rotational symmetry produces the 256 cases.</p>
-<p>​ We create an index for each case, based on the state of the vertex.  Using the vertex numbering in Figure 4, the eight bit index contains one bit for each vertex.<br>​ This index serves as a pointer into an edge table that gives all edge intersections for a given cube configuration.</p>
-</blockquote>
-<p>4.<strong>MARCHING CUBES算法</strong></p>
-<p>​   <u>在我们构造表面的方法中有两个基本步骤</u>。首先，我们查找符合用户指定值的表面并且创建三角形。然后，为了保证表面图像的品质，我们要计算表面上每个三角形的每个顶点的法向量。Marching Cubes使用分而治之的策略在由八个像素生成的逻辑立方体上查找曲面；<u>来自相邻切片的有四个。</u></p>
-<p>​   这个算法确定了表面如何贯穿立方体，然后移动到下一个立方体。<u>为了解出表面在立方体中的贯穿情况，我们做这么一个事情，如果那个顶点的数据值（data value）超过（或等于）我们构造的表面的值，我们就给立方体的顶点指定一个为1的值</u>。这些顶点在表面的里面（或外面）。<u>表面下面带有权值的立方体顶点收到一个零并且是在表面外面</u>。<u>表面与这些立方体的边相交，一个顶点在表面外部，另一个顶点在表面内部</u>。在这种设定下，我们在立方体内部确定了表面的拓扑结构，之后再求出相交位置。</p>
-<p>​   由于每个立方体有八个顶点和<u>two slates</u>，内部和外部，表面和立方体有256种相交方式。穷举这256种情况，我们建立一个列表去查找表面-边的相交情况，并且给定立方体顶点的标号。这个列表包含了每种相交情况的边。</p>
-<p>​   划分出这256种情况是可能的，但是会很乏味且易于出错。立方体的两个不同对称性把这个问题从256种情况降到14种</p>
 
       
     </div>
