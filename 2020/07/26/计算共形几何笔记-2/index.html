@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="笔记," />
 
 
 
@@ -90,8 +90,9 @@
 <meta property="og:image" content="https://casenoone.github.io/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/kform.png">
 <meta property="og:image" content="https://casenoone.github.io/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%81%B0%E5%BD%93.png">
 <meta property="article:published_time" content="2020-07-26T10:47:53.000Z">
-<meta property="article:modified_time" content="2020-07-26T14:39:09.518Z">
+<meta property="article:modified_time" content="2020-07-26T14:42:58.877Z">
 <meta property="article:author" content="Zhang Jian">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://casenoone.github.io/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/%E8%B0%83%E5%92%8C%E6%98%A0%E5%B0%84.png">
 
@@ -320,6 +321,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -361,6 +384,7 @@
         <p>本次以及以后的笔记都记录一些一开始不懂的，后来懂了的知识。本来打算用学数学的方法去学习，但是这些定理以及公式实在是晦涩难懂，所以我就用自己的话来写写，做到直觉上的理解是我的最大目标。</p>
 <h4 id="一、第一次作业总结"><a href="#一、第一次作业总结" class="headerlink" title="一、第一次作业总结"></a>一、第一次作业总结</h4><p>​   第一次作业是一个程序填空，要求是输入一个三角剖分好的网格，然后在这个网格上计算割图。做作业时感觉难点在于，要把概念上的对偶和实际程序中定义的对偶区分开来，概念上的对偶网格指的是，找到每一个三角形的中心，然后分别把这些中心连接起来，这样原来的点就变成一个面，原来的面变成一个点，边还是边。但是在求对偶网格的程序实现中，虽然概念上面变成点了，但程序中仍然以三角形来代表点，这样的话，在计算对偶网格的生成树时，就是广度优先遍历每一个三角形，生成树的每一个节点都是三角形，根据半边结构，一个三角形到相邻三角形只有一条路径，那就是它们的邻接边，也就是生成树中的树枝。</p>
 <h4 id="二、第二次作业总结"><a href="#二、第二次作业总结" class="headerlink" title="二、第二次作业总结"></a>二、第二次作业总结</h4><p>​   第二次作业是在求一个调和映射，目前我还不懂什么叫调和映射，从直观上来说，就是把一个曲面映射到一个单位圆上，映射后原来曲面的局部形状仍然保持，例如下图，整体形状发生了变化，但眼睛、鼻子等仍保持原状。为什么需要这么一个映射呢，目前还不清楚…</p>
+<a id="more"></a>
 <p><img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/调和映射.png" alt="调和映射"></p>
 <p>​   这个算法实质上是在解一个几何偏微分方程（目前不懂），提供了两种方法，一种是迭代法，一种是直接法。迭代法在我电脑上跑了半个多小时，应该是代码没有写好。我只做了迭代法，直接法不会做…需要到群里请教。</p>
 <h4 id="三、一些琐碎的知识点"><a href="#三、一些琐碎的知识点" class="headerlink" title="三、一些琐碎的知识点"></a>三、一些琐碎的知识点</h4><p><strong>1.为什么说图不可以缩成一个点？</strong></p>
@@ -388,6 +412,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          
+        </div>
       
 
       
