@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ALGORITHM（翻译）</title>
-    <url>/2020/07/20/ALGORITHM%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/</url>
-    <content><![CDATA[<blockquote>
-<ol>
-<li><p><strong>INFORMATION FLOW FOR 3D MEDICAL ALGORITHMS.</strong><br>Medical applications of 3D consist of four steps (Figure 1). Although one can combine the last three steps into one algorithm, we logically decompose the process as follows:</p>
-<ol>
-<li><p>Data acquisition.<br><u>This first step, performed by the medical imaging hardware, samples some property in a patient and produces multiple 2D slices of information.</u> The data sampled depends on the data acquisition technique. <u>X-ray computed tomography (CT) measures the spatially varying X-ray attenuation coefficient [3],</u>  CT images show internal structure.  <u>For 3D applications, CT is frequently used to look at bone structure, although we have had success visualizing soft tissue.</u></p>
-<p>​   Magnetic resonance (MR) measures three physical properties [20]. One property is the distribution of “mobile” hydrogen nuclei and shows overall structure within the slices.  The  other two properties measure relaxation times of the nuclei. MR, a recent technique, shows excellent contrast between a variety of soft tissues.  However, the variety of surfaces presents a challenge to 3D surface construction and requires techniques for selective surface extraction and display.</p>
-<p>​    A third acquisition technique, single-photon emission computed tomography (SPECT) measures the emission of gamma rays [24].  The source of these rays is a radioisotope distributed within the body.  In addition to structure, SPECT can show the presence of blood in structures with a much lower dose than that required by CT.</p>
-</li>
-</ol>
-</li>
-</ol>
-<ol>
-<li><p>Image processing.</p>
-<pre><code>Some algorithms use image processing techniques to find structures within the 3D data [1,32,30,29] or to filter the original data.  MR data, in particular, needs image processing to select appropriate structure.
-</code></pre></li>
-<li><p>Surface construction.</p>
-<pre><code>Surface construction, the topic of this paper, involves the creation of a surface model from the 3D data. The model usually consists of 3D volume elements (voxels) or polygons. Users select the desired surface by specifying a density value. &lt;u&gt;This step can also include the creation of cut or capped surfaces.&lt;/u&gt;
-</code></pre></li>
-<li><p>Display.</p>
-<pre><code>Having created the surface, the final step displays that surface using display techniques that include ray casting, &lt;u&gt;depth shading, and color shading.
-</code></pre></li>
-</ol>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
     <title>计算共形几何笔记(1)</title>
     <url>/2020/07/18/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/</url>
     <content><![CDATA[<p>​   果不其然，这门课的难度远远超过我的承受能力。以前觉得高数难，觉得线代难，但是那种难，只是想不到思路，翻看答案还是能想通的，至少我觉得那是符合我的认知的。共形几何这门课，每一个知识点都很抽象，只有少部分可以有一个直观印象，大部分都是听不懂的，并且在我脑子里毫无逻辑可循。课程前言说，只需具备多元微积分、线性代数的基础即可，我真有点怀疑这要求是不太低了…</p>
