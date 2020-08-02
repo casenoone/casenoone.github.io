@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="笔记," />
 
 
 
@@ -79,14 +79,25 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="最小自然数原理证明数学归纳法">
-<meta property="og:url" content="https://casenoone.github.io/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/index.html">
+<meta name="description" content="每一节会讲很多东西，但“弄懂的”也就笔记里这些东西，还仅仅是从直观上了解。这课太打击人了…尽力而为吧。 一、第二次作业总结 ​   第二次作业的直接法是在解一个叫做discrete方程：  其中，ϕ(v)对应的是一个调和映射，也就是该方程要解的未知数。 一开始做的时候把这个式子展错了，看到群里别人的思路才理解，记录一下：  从展开式中可以看出，在每一个方程中，像a1、a2这样的点都会出现多次，那么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算共形几何笔记(3)">
+<meta property="og:url" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/index.html">
 <meta property="og:site_name" content="我吃橘子">
-<meta property="article:published_time" content="2020-02-12T13:24:10.000Z">
-<meta property="article:modified_time" content="2020-02-12T13:24:10.756Z">
+<meta property="og:description" content="每一节会讲很多东西，但“弄懂的”也就笔记里这些东西，还仅仅是从直观上了解。这课太打击人了…尽力而为吧。 一、第二次作业总结 ​   第二次作业的直接法是在解一个叫做discrete方程：  其中，ϕ(v)对应的是一个调和映射，也就是该方程要解的未知数。 一开始做的时候把这个式子展错了，看到群里别人的思路才理解，记录一下：  从展开式中可以看出，在每一个方程中，像a1、a2这样的点都会出现多次，那么">
+<meta property="og:image" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/1.png">
+<meta property="og:image" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/2.jpg">
+<meta property="og:image" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/3.jpg">
+<meta property="og:image" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/4.png">
+<meta property="og:image" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/5.png">
+<meta property="og:image" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/6.png">
+<meta property="og:image" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/7.png">
+<meta property="article:published_time" content="2020-08-02T14:55:13.000Z">
+<meta property="article:modified_time" content="2020-08-02T15:06:46.195Z">
 <meta property="article:author" content="Zhang Jian">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/1.png">
 
 
 
@@ -116,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://casenoone.github.io/最小自然数原理证明数学归纳法/"/>
+  <link rel="canonical" href="https://casenoone.github.io/2020/08/02/计算共形几何笔记-3/"/>
 
 
 
 
 
-  <title>最小自然数原理证明数学归纳法 | 我吃橘子</title>
+  <title>计算共形几何笔记(3) | 我吃橘子</title>
   
 
 
@@ -261,33 +272,203 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://casenoone.github.io/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我吃橘子">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">最小自然数原理证明数学归纳法</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">计算共形几何笔记(3)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-02T22:55:13+08:00">
+                2020-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/" class="leancloud_visitors" data-flag-title="计算共形几何笔记(3)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>每一节会讲很多东西，但“弄懂的”也就笔记里这些东西，还仅仅是从直观上了解。这课太打击人了…尽力而为吧。</p>
+<p><strong>一、第二次作业总结</strong></p>
+<p>​   第二次作业的直接法是在解一个叫做discrete方程：</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/1.png" alt="1"></p>
+<p>其中，ϕ(v)对应的是一个调和映射，也就是该方程要解的未知数。</p>
+<p>一开始做的时候把这个式子展错了，看到群里别人的思路才理解，记录一下：</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/2.jpg" alt="2"></p>
+<p>从展开式中可以看出，在每一个方程中，像a1、a2这样的点都会出现多次，那么把它们合并同类项，对应的就是主对角线上的w累加；而边界点的值是已知的，所以移到等号右边，剩下的项按照行列号填入相应的位置中，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (pW-&gt;boundary()) &#123;</span><br><span class="line">    B_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, wid, w));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    A_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, wid, -w));</span><br><span class="line">&#125;</span><br><span class="line">sw += w;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**************************/</span></span><br><span class="line">A_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, vid, sw));</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>二、一些琐碎的知识点</strong></p>
+<p>​   <strong>1.平行移动以及高斯曲率的直观解释</strong></p>
+<p>​   所谓平行移动的意思就是，在像图中这样的曲面上取一点处的切向量<strong>v1</strong>，然后把这个曲面展开铺平，得到一些平面上的三角形，把<strong>v1</strong>沿着这些三角形走一圈再回到原来的位置，得到<strong>v2</strong>，再把这些三角形重新组合为一个曲面，可以发现<strong>v1</strong>与<strong>v2</strong>有一个夹角，这个夹角就是离散的<code>高斯曲率</code>，这样的移动就叫做<code>平行移动</code>。<img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/3.jpg" alt="3"></p>
+<p>​   <strong>2.绝对微分（存疑）</strong></p>
+<p>​   这里没大听懂，讲课的时候老师说，变换后角度之差为方向导数——绝对微分的几何定义。</p>
+<p>​   <strong>3.黎曼度量的直观解释</strong></p>
+<p>​   就是三角网格的边长</p>
+<p>​   <strong>4.Hodge star在电场中的直观解释</strong></p>
+<p>​   图一中的电荷一正一负，图二是两个正电荷（存疑，我感觉老师上课讲反了，后面再求证一下），蓝色是等压线，红色是电场强度线，在每一个红蓝相交的点，等压线的切线与电场强度线的切线总是垂直，那么可以说，通过Hodge star的运算可以由蓝色得到红色。<img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/4.png" alt="4"></p>
+<p>​   <strong>5.离散情况下Hodge Star的理解</strong></p>
+<p>​   如图，在黑边上定义一个1-form，则Hodge Star定义在红边上。</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/5.png" alt="5"></p>
+<p>具体来看，如下图，红线上有一个1-form，它除以红边的长=其Hodge Star定义在黑边上除以黑边的长。</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/6.png" alt="6"></p>
+<p>​   <strong>6.离散情况下理解调和1-form</strong></p>
+<p>​   如下图，黑边上定义了一个1-form，$w$,由于$w$是闭合的，所以$dw=0$，即旋量为0.在原来这个图上兜一圈，是为0的。求一次Hodge Star后得到一个对偶的情况，在每一个胞腔内兜一圈也是0，于是这样的1-form称为是调和的。</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/7.png" alt="7"></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/" rel="next" title="计算共形几何笔记(2)">
+                <i class="fa fa-chevron-left"></i> 计算共形几何笔记(2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
