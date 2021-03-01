@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2D弹簧质点系统的隐式求解</title>
+    <url>/2021/03/01/2D%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%9A%90%E5%BC%8F%E6%B1%82%E8%A7%A3/</url>
+    <content><![CDATA[<p>本文主要记录如何用隐式方法求解弹簧质点系统，也是对Games201课程作业一的总结。</p>
+<p>本文主要分为以下几个部分：</p>
+<ul>
+<li><p>弹簧质点系统的简单介绍</p>
+</li>
+<li><p>隐式方法的推导</p>
+</li>
+<li>Jacobi矩阵的推导</li>
+<li>数值方法的简单介绍</li>
+<li>程序验证</li>
+<li>总结</li>
+</ul>
+<p><strong>一、弹簧质点系统</strong></p>
+<p>弹簧质点系统在柔体、弹性体中有广泛的应用。根据胡克定律对弹簧系统建模：</p>
+<p>​    $\boldsymbol{F}_s=-K(|\boldsymbol{x}_{ij}-r|)\hat{\boldsymbol{x}}_{ij}\tag{1}$</p>
+<p>其中$\boldsymbol{x}_{ij}=\boldsymbol{x}_{i}-\boldsymbol{x}_{j}$ 。系统中两个质点受力相反。$\hat{\boldsymbol{x}}_{ij}$为单位向量。</p>
+<p><strong>二、隐式方法的推导</strong></p>
+<p>相对于显式的方法，隐式方法更稳定，允许较大时步。关于显式、隐式方法的概述，可参考这篇文章。</p>
+<p>下面进行隐式方法的推导：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}_{t+1}=\boldsymbol{x}_t+\triangle{t}\boldsymbol{v}_{t+1}\tag{2}</script><script type="math/tex; mode=display">
+\boldsymbol{v}_{t+1}=\boldsymbol{v}_t+\triangle{t}\boldsymbol{M}^{-1}\boldsymbol{f}(\boldsymbol{x}_{t+1})\tag{3}</script><a id="more"></a>
+<p>其中：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}={[\boldsymbol{x}_{1},...,\boldsymbol{x}_{n}]}^T</script><script type="math/tex; mode=display">
+\boldsymbol{v}={[\boldsymbol{v}_{1},...,\boldsymbol{v}_{n}]}^T</script><script type="math/tex; mode=display">
+\boldsymbol{f(\boldsymbol{x})}={[\boldsymbol{f}_1{(\boldsymbol{x}_1,...,\boldsymbol{x}_n)}^T,...,\boldsymbol{f}_n{(\boldsymbol{x}_1,...,\boldsymbol{x}_n)}^T]}^T</script><p>将（2）代入（3）得：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{v}_{t+1}=\boldsymbol{v}_t+\triangle{t}\boldsymbol{M}^{-1}\boldsymbol{f}(\boldsymbol{x}_{t}+\triangle{t}\boldsymbol{v}_{t+1})\tag{4}</script><p>注意到（4）式右侧$\boldsymbol{f}$里的参数，（4）式是非线性的，所以对参数进行一阶泰勒展开，得：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{v}_{t+1}=\boldsymbol{v}_t+\triangle{t}\boldsymbol{M}^{-1}[f(\boldsymbol{x}_{t})+\frac{\part \boldsymbol{f}}{\part \boldsymbol{x}}(\boldsymbol{x}_t)\triangle{t}\boldsymbol{v}_{t+1}]\tag{5}</script><p>整理一下，得：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M}\boldsymbol{v}_{t+1}=\boldsymbol{M}\boldsymbol{v}_t+\triangle{t}[f(\boldsymbol{x}_{t})+\frac{\part \boldsymbol{f}}{\part \boldsymbol{x}}(\boldsymbol{x}_t)\triangle{t}\boldsymbol{v}_{t+1}]\tag{6}</script><p>令$\boldsymbol{J}=\frac{\part{\boldsymbol{f}}}{\part{\boldsymbol{x}}}(\boldsymbol{x}_t)$,也就是雅可比矩阵。</p>
+<p>整理后，可以得到：</p>
+<script type="math/tex; mode=display">
+[\boldsymbol{M}-{\triangle{t}}^2\boldsymbol{J}]\boldsymbol{v}_{t+1}=\boldsymbol{M}\boldsymbol{v}_{t}+\triangle{t}\boldsymbol{f}(\boldsymbol{x}_t)\tag{7}</script><script type="math/tex; mode=display">
+\boldsymbol{A}\boldsymbol{v}_{t+1}=\boldsymbol{b}\tag{8}</script><p>解此方程组，得到结果。</p>
+<p><strong>三、Jacobi矩阵的推导</strong></p>
+<p>上一部分我们得到了公式（7），解这个方程组之前我们要先求出$\boldsymbol{J}$。首先罗列一些基本公式：</p>
+<p>标量函数对矢量求导：</p>
+<script type="math/tex; mode=display">
+\frac{\part f}{\part \boldsymbol{x}} = [\frac{\part f}{\part x_i}\ \frac{\part f} {\part x_j}\ \frac{\part f} {\part x_k}]\tag{9}</script><p>矢量函数对矢量求导：</p>
+<script type="math/tex; mode=display">
+\frac{\part \boldsymbol{f}}{\part \boldsymbol{x}}=\left(                   \begin{array}{ccc}       \frac{\part f_i}{\part x_i} & \frac{\part f_i}{\part x_j} & \frac{\part f_i}{\part x_k}\\      \frac{\part f_j}{\part x_i} & \frac{\part f_j}{\part x_j} & \frac{\part f_j}{\part x_k}\\       \frac{\part f_k}{\part x_i} & \frac{\part f_k}{\part x_j} & \frac{\part f_k}{\part x_k}\\  \end{array}\right)\tag{10}</script><p>单位向量对向量求导：</p>
+<script type="math/tex; mode=display">
+\frac{\part \hat{\boldsymbol{x}}}{\part \boldsymbol{x} } = \frac{\boldsymbol{I}-\hat{\boldsymbol{x}}\cdot{\hat{\boldsymbol{x}}^T}}{|\boldsymbol{x}|}\tag{11}</script><p>其中，$\boldsymbol{I}$是单位矩阵。</p>
+<p>对于弹力，从胡克定律着手进行雅可比矩阵推导；对于弹簧衰减力、重力等与位置无关的力，这里使用显式的方法去计算。</p>
+<p>下面从式（1）入手，推导弹力的雅可比矩阵：</p>
+<p>这里只考虑二维情况，首先考虑一个系统里只有两个质点$i$和$j$，那么按照式(10)的定义，我们求导后会分别得到$\boldsymbol{J}_{ii}$，$\boldsymbol{J}_{ij}$，$\boldsymbol{J}_{ji}$，$\boldsymbol{J}_{jj}$四个小矩阵，以计算$\boldsymbol{J}_{ii}$为例进行推导：</p>
+<script type="math/tex; mode=display">
+\frac{\part \boldsymbol{F}_{s}}{\part \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(\boldsymbol{x}_{ij}-r)\frac{\part \hat{\boldsymbol{x}}_{ij}}{\boldsymbol{x}_i}+\hat{\boldsymbol{x}}_{ij}\frac{\part |\boldsymbol{x}_{ij}|-r}{\boldsymbol{x}_i}]\tag{12}</script><p>$\boldsymbol{F}_s$为质点$i$所受弹力。</p>
+<p>利用公式（11），得：</p>
+<script type="math/tex; mode=display">
+\frac{\part \boldsymbol{F}_{s}}{\part \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(|\boldsymbol{x}_{ij}-r|)(\frac{\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}}{|\boldsymbol{x}_{ij}|})+\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}]\tag{13}</script><p>变一下形：</p>
+<script type="math/tex; mode=display">
+\frac{\part \boldsymbol{F}_{s}}{\part \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(1-\frac{r}{|\boldsymbol{x}_{ij}|})({\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}})+\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}]\tag{14}</script><p>将右侧圆括号展开后变形得：</p>
+<script type="math/tex; mode=display">
+\frac{\part \boldsymbol{F}_{s}}{\part \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[\boldsymbol{I}-\frac{r}{|\boldsymbol{x}_{ij}|}(\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T})]\tag{15}</script><p>同理，可以推出其余三个小矩阵：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{J}_{ii}=-\boldsymbol{J}_{ij}=\boldsymbol{J}_{jj}-\boldsymbol{J}_{ji}\tag{16}</script><p>至此，雅可比矩阵推导完毕，我们需要在每一时步都组装这个矩阵，得到：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{J}=\left(                   \begin{array}{ccc}       \boldsymbol{J}_{ii} & \boldsymbol{J}_{ij} \\     \boldsymbol{J}_{ji} & \boldsymbol{J}_{jj} \\        \end{array}\right)\tag{10}</script><p><strong>四、数值方法的简单介绍</strong></p>
+<p>至此，我们就可以着手去解这个线性方程组了。本人在数值计算方法方面的学习一拖再拖，还没学多少，只知道可以用<strong>Jacobi method</strong>、<strong>Gauss–Seidel Method</strong>、<strong>Gradient Descent Method</strong>等。关于这些算法网上有大量资料，这里就懒得写了。</p>
+<p><strong>五、程序验证</strong></p>
+<p>用pixi.js做弹簧的可视化，实现了弹簧质点系统的显式方法，代码地址：<a href="https://github.com/casenoone/2D-mass-spring-system，在线demo：https://casenoone.github.io/2D-mass-spring-system/html/mass-spring.html" target="_blank" rel="noopener">https://github.com/casenoone/2D-mass-spring-system，在线demo：https://casenoone.github.io/2D-mass-spring-system/html/mass-spring.html</a></p>
+<p>本文推导的隐式积分法的程序正在coding中…</p>
+<p><strong>六、总结</strong></p>
+<p>本文主要参考Games201第二讲、Miles Macklin博客里的文章《implict springs》、Matthias Muller等人的《Real Time Physics Class Notes》,其中貌似发现《Real Time Physics Class Notes》里 的一个公式推导的错误，第17页的公式3.32多除了一个$l^2$。</p>
+]]></content>
+      <categories>
+        <category>物理模拟</category>
+      </categories>
+      <tags>
+        <tag>弹性体</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算共形几何笔记(3)</title>
     <url>/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/</url>
     <content><![CDATA[<p>每一节会讲很多东西，但“弄懂的”也就笔记里这些东西，还仅仅是从直观上了解。这课太打击人了…尽力而为吧。</p>
