@@ -63,7 +63,7 @@
 <script type="math/tex; mode=display">
 \boldsymbol{J}_{ii}=-\boldsymbol{J}_{ij}=\boldsymbol{J}_{jj}-\boldsymbol{J}_{ji}\tag{16}</script><p>至此，雅可比矩阵推导完毕，我们需要在每一时步都组装这个矩阵，得到：</p>
 <script type="math/tex; mode=display">
-\boldsymbol{J}=\left(                   \begin{array}{ccc}       \boldsymbol{J}_{ii} & \boldsymbol{J}_{ij} \\     \boldsymbol{J}_{ji} & \boldsymbol{J}_{jj} \\        \end{array}\right)\tag{10}</script><p><strong>四、数值方法的简单介绍</strong></p>
+\boldsymbol{J}=\left(                   \begin{array}{ccc}       \boldsymbol{J}_{ii} & \boldsymbol{J}_{ij} \\     \boldsymbol{J}_{ji} & \boldsymbol{J}_{jj} \\        \end{array}\right)\tag{17}</script><p><strong>四、数值方法的简单介绍</strong></p>
 <p>至此，我们就可以着手去解这个线性方程组了。本人在数值计算方法方面的学习一拖再拖，还没学多少，只知道可以用<strong>Jacobi method</strong>、<strong>Gauss–Seidel Method</strong>、<strong>Gradient Descent Method</strong>等。关于这些算法网上有大量资料，这里就懒得写了。</p>
 <p><strong>五、程序验证</strong></p>
 <p>用pixi.js做弹簧的可视化，实现了弹簧质点系统的显式方法，<a href="https://github.com/casenoone/2D-mass-spring-system" target="_blank" rel="noopener">代码地址点这里</a></p>
