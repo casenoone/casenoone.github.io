@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="我吃橘子">
 <meta property="og:description" content="2D弹簧质点系统的隐式求解 本文主要记录如何用隐式方法求解弹簧质点系统，也是对Games201课程作业一的总结。 本文主要分为以下几个部分：  弹簧质点系统的简单介绍 隐式方法的推导 Jacobi矩阵的推导 数值方法的简单介绍 程序验证 总结  一、弹簧质点系统 弹簧质点系统在柔体、弹性体中有广泛的应用。根据胡克定律对弹簧系统建模： ​    $\boldsymbol{F}_s&#x3D;-K(|\bold">
 <meta property="article:published_time" content="2021-03-01T08:44:41.000Z">
-<meta property="article:modified_time" content="2021-03-01T10:55:14.353Z">
+<meta property="article:modified_time" content="2021-03-01T10:59:47.815Z">
 <meta property="article:author" content="Zhang Jian">
 <meta property="article:tag" content="弹性体">
 <meta name="twitter:card" content="summary">
@@ -392,7 +392,7 @@
 <p>​    $\boldsymbol{F}_s=-K(|\boldsymbol{x}_{ij}-r|)\hat{\boldsymbol{x}}_{ij}\tag{1}$</p>
 <p>其中$\boldsymbol{x}_{ij}=\boldsymbol{x}_{i}-\boldsymbol{x}_{j}$ 。系统中两个质点受力相反。$\hat{\boldsymbol{x}}_{ij}$为单位向量。</p>
 <p><strong>二、隐式方法的推导</strong></p>
-<p>相对于显式的方法，隐式方法更稳定，允许较大时步。关于显式、隐式方法的概述，可参考这篇文章。</p>
+<p>相对于显式的方法，隐式方法更稳定，允许较大时步。关于显式、隐式方法的概述，可参考这个<a href="https://graphics.pixar.com/pbm2001/" target="_blank" rel="noopener">course note</a>。</p>
 <p>下面进行隐式方法的推导：</p>
 <script type="math/tex; mode=display">
 \boldsymbol{x}_{t+1}=\boldsymbol{x}_t+\triangle{t}\boldsymbol{v}_{t+1}\tag{2}</script><script type="math/tex; mode=display">
