@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="我吃橘子">
 <meta property="og:description" content="2D弹簧质点系统的隐式求解 本文主要记录如何用隐式方法求解弹簧质点系统，也是对Games201课程作业一的总结。 本文主要分为以下几个部分：  弹簧质点系统的简单介绍 隐式方法的推导 Jacobi矩阵的推导 数值方法的简单介绍 程序验证 总结  一、弹簧质点系统 弹簧质点系统在柔体、弹性体中有广泛的应用。根据胡克定律对弹簧系统建模： ​    $\boldsymbol{F}_s&#x3D;-K(|\bold">
 <meta property="article:published_time" content="2021-03-01T08:44:41.000Z">
-<meta property="article:modified_time" content="2021-03-01T09:00:58.003Z">
+<meta property="article:modified_time" content="2021-03-01T09:03:22.560Z">
 <meta property="article:author" content="Zhang Jian">
 <meta property="article:tag" content="弹性体">
 <meta name="twitter:card" content="summary">
@@ -405,9 +405,9 @@
 <script type="math/tex; mode=display">
 \boldsymbol{v}_{t+1}=\boldsymbol{v}_t+\triangle{t}\boldsymbol{M}^{-1}\boldsymbol{f}(\boldsymbol{x}_{t}+\triangle{t}\boldsymbol{v}_{t+1})\tag{4}</script><p>注意到（4）式右侧$\boldsymbol{f}$里的参数，（4）式是非线性的，所以对参数进行一阶泰勒展开，得：</p>
 <script type="math/tex; mode=display">
-\boldsymbol{v}_{t+1}=\boldsymbol{v}_t+\triangle{t}\boldsymbol{M}^{-1}[f(\boldsymbol{x}_{t})+\frac{\part \boldsymbol{f}}{\part \boldsymbol{x}}(\boldsymbol{x}_t)\triangle{t}\boldsymbol{v}_{t+1}]\tag{5}</script><p>整理一下，得：</p>
+\boldsymbol{v}_{t+1}=\boldsymbol{v}_t+\triangle{t}\boldsymbol{M}^{-1}[f(\boldsymbol{x}_{t})+\frac{\partial \boldsymbol{f}}{\partial \boldsymbol{x}}(\boldsymbol{x}_t)\triangle{t}\boldsymbol{v}_{t+1}]\tag{5}</script><p>整理一下，得：</p>
 <script type="math/tex; mode=display">
-\boldsymbol{M}\boldsymbol{v}_{t+1}=\boldsymbol{M}\boldsymbol{v}_t+\triangle{t}[f(\boldsymbol{x}_{t})+\frac{\part \boldsymbol{f}}{\part \boldsymbol{x}}(\boldsymbol{x}_t)\triangle{t}\boldsymbol{v}_{t+1}]\tag{6}</script><p>令$\boldsymbol{J}=\frac{\part{\boldsymbol{f}}}{\part{\boldsymbol{x}}}(\boldsymbol{x}_t)$,也就是雅可比矩阵。</p>
+\boldsymbol{M}\boldsymbol{v}_{t+1}=\boldsymbol{M}\boldsymbol{v}_t+\triangle{t}[f(\boldsymbol{x}_{t})+\frac{\partial \boldsymbol{f}}{\partial \boldsymbol{x}}(\boldsymbol{x}_t)\triangle{t}\boldsymbol{v}_{t+1}]\tag{6}</script><p>令$\boldsymbol{J}=\frac{\partial{\boldsymbol{f}}}{\partial{\boldsymbol{x}}}(\boldsymbol{x}_t)$,也就是雅可比矩阵。</p>
 <p>整理后，可以得到：</p>
 <script type="math/tex; mode=display">
 [\boldsymbol{M}-{\triangle{t}}^2\boldsymbol{J}]\boldsymbol{v}_{t+1}=\boldsymbol{M}\boldsymbol{v}_{t}+\triangle{t}\boldsymbol{f}(\boldsymbol{x}_t)\tag{7}</script><script type="math/tex; mode=display">
@@ -416,23 +416,23 @@
 <p>上一部分我们得到了公式（7），解这个方程组之前我们要先求出$\boldsymbol{J}$。首先罗列一些基本公式：</p>
 <p>标量函数对矢量求导：</p>
 <script type="math/tex; mode=display">
-\frac{\part f}{\part \boldsymbol{x}} = [\frac{\part f}{\part x_i}\ \frac{\part f} {\part x_j}\ \frac{\part f} {\part x_k}]\tag{9}</script><p>矢量函数对矢量求导：</p>
+\frac{\partial f}{\partial \boldsymbol{x}} = [\frac{\partial f}{\partial x_i}\ \frac{\partial f} {\partial x_j}\ \frac{\partial f} {\partial x_k}]\tag{9}</script><p>矢量函数对矢量求导：</p>
 <script type="math/tex; mode=display">
-\frac{\part \boldsymbol{f}}{\part \boldsymbol{x}}=\left(                   \begin{array}{ccc}       \frac{\part f_i}{\part x_i} & \frac{\part f_i}{\part x_j} & \frac{\part f_i}{\part x_k}\\      \frac{\part f_j}{\part x_i} & \frac{\part f_j}{\part x_j} & \frac{\part f_j}{\part x_k}\\       \frac{\part f_k}{\part x_i} & \frac{\part f_k}{\part x_j} & \frac{\part f_k}{\part x_k}\\  \end{array}\right)\tag{10}</script><p>单位向量对向量求导：</p>
+\frac{\partial \boldsymbol{f}}{\partial \boldsymbol{x}}=\left(                   \begin{array}{ccc}       \frac{\partial f_i}{\partial x_i} & \frac{\partial f_i}{\partial x_j} & \frac{\partial f_i}{\partial x_k}\\      \frac{\partial f_j}{\partial x_i} & \frac{\partial f_j}{\partial x_j} & \frac{\partial f_j}{\partial x_k}\\       \frac{\partial f_k}{\partial x_i} & \frac{\partial f_k}{\partial x_j} & \frac{\partial f_k}{\partial x_k}\\  \end{array}\right)\tag{10}</script><p>单位向量对向量求导：</p>
 <script type="math/tex; mode=display">
-\frac{\part \hat{\boldsymbol{x}}}{\part \boldsymbol{x} } = \frac{\boldsymbol{I}-\hat{\boldsymbol{x}}\cdot{\hat{\boldsymbol{x}}^T}}{|\boldsymbol{x}|}\tag{11}</script><p>其中，$\boldsymbol{I}$是单位矩阵。</p>
+\frac{\partial \hat{\boldsymbol{x}}}{\partial \boldsymbol{x} } = \frac{\boldsymbol{I}-\hat{\boldsymbol{x}}\cdot{\hat{\boldsymbol{x}}^T}}{|\boldsymbol{x}|}\tag{11}</script><p>其中，$\boldsymbol{I}$是单位矩阵。</p>
 <p>对于弹力，从胡克定律着手进行雅可比矩阵推导；对于弹簧衰减力、重力等与位置无关的力，这里使用显式的方法去计算。</p>
 <p>下面从式（1）入手，推导弹力的雅可比矩阵：</p>
 <p>这里只考虑二维情况，首先考虑一个系统里只有两个质点$i$和$j$，那么按照式(10)的定义，我们求导后会分别得到$\boldsymbol{J}_{ii}$，$\boldsymbol{J}_{ij}$，$\boldsymbol{J}_{ji}$，$\boldsymbol{J}_{jj}$四个小矩阵，以计算$\boldsymbol{J}_{ii}$为例进行推导：</p>
 <script type="math/tex; mode=display">
-\frac{\part \boldsymbol{F}_{s}}{\part \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(\boldsymbol{x}_{ij}-r)\frac{\part \hat{\boldsymbol{x}}_{ij}}{\boldsymbol{x}_i}+\hat{\boldsymbol{x}}_{ij}\frac{\part |\boldsymbol{x}_{ij}|-r}{\boldsymbol{x}_i}]\tag{12}</script><p>$\boldsymbol{F}_s$为质点$i$所受弹力。</p>
+\frac{\partial \boldsymbol{F}_{s}}{\partial \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(\boldsymbol{x}_{ij}-r)\frac{\partial \hat{\boldsymbol{x}}_{ij}}{\boldsymbol{x}_i}+\hat{\boldsymbol{x}}_{ij}\frac{\partial |\boldsymbol{x}_{ij}|-r}{\boldsymbol{x}_i}]\tag{12}</script><p>$\boldsymbol{F}_s$为质点$i$所受弹力。</p>
 <p>利用公式（11），得：</p>
 <script type="math/tex; mode=display">
-\frac{\part \boldsymbol{F}_{s}}{\part \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(|\boldsymbol{x}_{ij}-r|)(\frac{\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}}{|\boldsymbol{x}_{ij}|})+\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}]\tag{13}</script><p>变一下形：</p>
+\frac{\partial \boldsymbol{F}_{s}}{\partial \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(|\boldsymbol{x}_{ij}-r|)(\frac{\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}}{|\boldsymbol{x}_{ij}|})+\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}]\tag{13}</script><p>变一下形：</p>
 <script type="math/tex; mode=display">
-\frac{\part \boldsymbol{F}_{s}}{\part \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(1-\frac{r}{|\boldsymbol{x}_{ij}|})({\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}})+\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}]\tag{14}</script><p>将右侧圆括号展开后变形得：</p>
+\frac{\partial \boldsymbol{F}_{s}}{\partial \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[(1-\frac{r}{|\boldsymbol{x}_{ij}|})({\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}})+\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T}]\tag{14}</script><p>将右侧圆括号展开后变形得：</p>
 <script type="math/tex; mode=display">
-\frac{\part \boldsymbol{F}_{s}}{\part \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[\boldsymbol{I}-\frac{r}{|\boldsymbol{x}_{ij}|}(\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T})]\tag{15}</script><p>同理，可以推出其余三个小矩阵：</p>
+\frac{\partial \boldsymbol{F}_{s}}{\partial \boldsymbol{x}_{i}}=\boldsymbol{J}_{ii}=-k[\boldsymbol{I}-\frac{r}{|\boldsymbol{x}_{ij}|}(\boldsymbol{I}-\hat{\boldsymbol{x}}_{ij}\cdot{\hat{\boldsymbol{x}}_{ij}^T})]\tag{15}</script><p>同理，可以推出其余三个小矩阵：</p>
 <script type="math/tex; mode=display">
 \boldsymbol{J}_{ii}=-\boldsymbol{J}_{ij}=\boldsymbol{J}_{jj}-\boldsymbol{J}_{ji}\tag{16}</script><p>至此，雅可比矩阵推导完毕，我们需要在每一时步都组装这个矩阵，得到：</p>
 <script type="math/tex; mode=display">
