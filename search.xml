@@ -1,218 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>计算共形几何笔记(3)</title>
-      <link href="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/"/>
-      <url>/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/</url>
-      
-        <content type="html"><![CDATA[<p>每一节会讲很多东西，但“弄懂的”也就笔记里这些东西，还仅仅是从直观上了解。这课太打击人了…尽力而为吧。</p><p><strong>一、第二次作业总结</strong></p><p>​   第二次作业的直接法是在解一个叫做discrete方程：</p><p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/1.png" alt="1"></p><p>其中，ϕ(v)对应的是一个调和映射，也就是该方程要解的未知数。</p><p>一开始做的时候把这个式子展错了，看到群里别人的思路才理解，记录一下：</p><p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/2.jpg" alt="2"></p><p>从展开式中可以看出，在每一个方程中，像a1、a2这样的点都会出现多次，那么把它们合并同类项，对应的就是主对角线上的w累加；而边界点的值是已知的，所以移到等号右边，剩下的项按照行列号填入相应的位置中，代码如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (pW-&gt;boundary()) &#123;</span><br><span class="line">    B_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, wid, w));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    A_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, wid, -w));</span><br><span class="line">&#125;</span><br><span class="line">sw += w;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**************************/</span></span><br><span class="line">A_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, vid, sw));</span><br></pre></td></tr></table></figure><a id="more"></a><p><strong>二、一些琐碎的知识点</strong></p><p>​   <strong>1.平行移动以及高斯曲率的直观解释</strong></p><p>​   所谓平行移动的意思就是，在像图中这样的曲面上取一点处的切向量<strong>v1</strong>，然后把这个曲面展开铺平，得到一些平面上的三角形，把<strong>v1</strong>沿着这些三角形走一圈再回到原来的位置，得到<strong>v2</strong>，再把这些三角形重新组合为一个曲面，可以发现<strong>v1</strong>与<strong>v2</strong>有一个夹角，这个夹角就是离散的<code>高斯曲率</code>，这样的移动就叫做<code>平行移动</code>。<img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/3.jpg" alt="3"></p><p>​   <strong>2.绝对微分（存疑）</strong></p><p>​   这里没大听懂，讲课的时候老师说，变换后角度之差为方向导数——绝对微分的几何定义。</p><p>​   <strong>3.黎曼度量的直观解释</strong></p><p>​   就是三角网格的边长</p><p>​   <strong>4.Hodge star在电场中的直观解释</strong></p><p>​   图一中的电荷一正一负，图二是两个正电荷（存疑，我感觉老师上课讲反了，后面再求证一下），蓝色是等压线，红色是电场强度线，在每一个红蓝相交的点，等压线的切线与电场强度线的切线总是垂直，那么可以说，通过Hodge star的运算可以由蓝色得到红色。<img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/4.png" alt="4"></p><p>​   <strong>5.离散情况下Hodge Star的理解</strong></p><p>​   如图，在黑边上定义一个1-form，则Hodge Star定义在红边上。</p><p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/5.png" alt="5"></p><p>具体来看，如下图，红线上有一个1-form，它除以红边的长=其Hodge Star定义在黑边上除以黑边的长。</p><p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/6.png" alt="6"></p><p>​   <strong>6.离散情况下理解调和1-form</strong></p><p>​   如下图，黑边上定义了一个1-form，$w$,由于$w$是闭合的，所以$dw=0$，即旋量为0.在原来这个图上兜一圈，是为0的。求一次Hodge Star后得到一个对偶的情况，在每一个胞腔内兜一圈也是0，于是这样的1-form称为是调和的。</p><p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/7.png" alt="7"></p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>计算共形几何笔记(3)</title>
+    <url>/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/</url>
+    <content><![CDATA[<p>每一节会讲很多东西，但“弄懂的”也就笔记里这些东西，还仅仅是从直观上了解。这课太打击人了…尽力而为吧。</p>
+<p><strong>一、第二次作业总结</strong></p>
+<p>​   第二次作业的直接法是在解一个叫做discrete方程：</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/1.png" alt="1"></p>
+<p>其中，ϕ(v)对应的是一个调和映射，也就是该方程要解的未知数。</p>
+<p>一开始做的时候把这个式子展错了，看到群里别人的思路才理解，记录一下：</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/2.jpg" alt="2"></p>
+<p>从展开式中可以看出，在每一个方程中，像a1、a2这样的点都会出现多次，那么把它们合并同类项，对应的就是主对角线上的w累加；而边界点的值是已知的，所以移到等号右边，剩下的项按照行列号填入相应的位置中，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (pW-&gt;boundary()) &#123;</span><br><span class="line">    B_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, wid, w));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    A_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, wid, -w));</span><br><span class="line">&#125;</span><br><span class="line">sw += w;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**************************/</span></span><br><span class="line">A_coefficients.push_back(Eigen::Triplet&lt;<span class="keyword">double</span>&gt;(vid, vid, sw));</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>二、一些琐碎的知识点</strong></p>
+<p>​   <strong>1.平行移动以及高斯曲率的直观解释</strong></p>
+<p>​   所谓平行移动的意思就是，在像图中这样的曲面上取一点处的切向量<strong>v1</strong>，然后把这个曲面展开铺平，得到一些平面上的三角形，把<strong>v1</strong>沿着这些三角形走一圈再回到原来的位置，得到<strong>v2</strong>，再把这些三角形重新组合为一个曲面，可以发现<strong>v1</strong>与<strong>v2</strong>有一个夹角，这个夹角就是离散的<code>高斯曲率</code>，这样的移动就叫做<code>平行移动</code>。<img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/3.jpg" alt="3"></p>
+<p>​   <strong>2.绝对微分（存疑）</strong></p>
+<p>​   这里没大听懂，讲课的时候老师说，变换后角度之差为方向导数——绝对微分的几何定义。</p>
+<p>​   <strong>3.黎曼度量的直观解释</strong></p>
+<p>​   就是三角网格的边长</p>
+<p>​   <strong>4.Hodge star在电场中的直观解释</strong></p>
+<p>​   图一中的电荷一正一负，图二是两个正电荷（存疑，我感觉老师上课讲反了，后面再求证一下），蓝色是等压线，红色是电场强度线，在每一个红蓝相交的点，等压线的切线与电场强度线的切线总是垂直，那么可以说，通过Hodge star的运算可以由蓝色得到红色。<img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/4.png" alt="4"></p>
+<p>​   <strong>5.离散情况下Hodge Star的理解</strong></p>
+<p>​   如图，在黑边上定义一个1-form，则Hodge Star定义在红边上。</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/5.png" alt="5"></p>
+<p>具体来看，如下图，红线上有一个1-form，它除以红边的长=其Hodge Star定义在黑边上除以黑边的长。</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/6.png" alt="6"></p>
+<p>​   <strong>6.离散情况下理解调和1-form</strong></p>
+<p>​   如下图，黑边上定义了一个1-form，$w$,由于$w$是闭合的，所以$dw=0$，即旋量为0.在原来这个图上兜一圈，是为0的。求一次Hodge Star后得到一个对偶的情况，在每一个胞腔内兜一圈也是0，于是这样的1-form称为是调和的。</p>
+<p><img src="/2020/08/02/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-3/7.png" alt="7"></p>
+]]></content>
       <categories>
-          
-          <category> 数学 </category>
-          
+        <category>数学</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 笔记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>计算共形几何笔记(2)</title>
-      <link href="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/"/>
-      <url>/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/</url>
-      
-        <content type="html"><![CDATA[<p>本次以及以后的笔记都记录一些一开始不懂的，后来懂了的知识。本来打算用学数学的方法去学习，但是这些定理以及公式实在是晦涩难懂，所以我就用自己的话来写写，做到直觉上的理解是我的最大目标。</p><h4 id="一、第一次作业总结"><a href="#一、第一次作业总结" class="headerlink" title="一、第一次作业总结"></a>一、第一次作业总结</h4><p>​   第一次作业是一个程序填空，要求是输入一个三角剖分好的网格，然后在这个网格上计算割图。做作业时感觉难点在于，要把概念上的对偶和实际程序中定义的对偶区分开来，概念上的对偶网格指的是，找到每一个三角形的中心，然后分别把这些中心连接起来，这样原来的点就变成一个面，原来的面变成一个点，边还是边。但是在求对偶网格的程序实现中，虽然概念上面变成点了，但程序中仍然以三角形来代表点，这样的话，在计算对偶网格的生成树时，就是广度优先遍历每一个三角形，生成树的每一个节点都是三角形，根据半边结构，一个三角形到相邻三角形只有一条路径，那就是它们的邻接边，也就是生成树中的树枝。</p><h4 id="二、第二次作业总结"><a href="#二、第二次作业总结" class="headerlink" title="二、第二次作业总结"></a>二、第二次作业总结</h4><p>​   第二次作业是在求一个调和映射，目前我还不懂什么叫调和映射，从直观上来说，就是把一个曲面映射到一个单位圆上，映射后原来曲面的局部形状仍然保持，例如下图，整体形状发生了变化，但眼睛、鼻子等仍保持原状。为什么需要这么一个映射呢，目前还不清楚…</p><a id="more"></a><p><img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/调和映射.png" alt="调和映射"></p><p>​   这个算法实质上是在解一个几何偏微分方程（目前不懂），提供了两种方法，一种是迭代法，一种是直接法。迭代法在我电脑上跑了半个多小时，应该是代码没有写好。我只做了迭代法，直接法不会做…需要到群里请教。</p><h4 id="三、一些琐碎的知识点"><a href="#三、一些琐碎的知识点" class="headerlink" title="三、一些琐碎的知识点"></a>三、一些琐碎的知识点</h4><p><strong>1.为什么说图不可以缩成一个点？</strong></p><p>​   因为要想缩成一个点，一定要有一个依附的东西，例如曲面上、平面上的一个环，可以缩成一个点，图并不是这样的结构，所以它无法缩成一个点。</p><p><strong>2.什么是边缘算子？</strong></p><p>​   直观上来说，边缘算子就是剥离出每个链的边界，例如把大卫脸上的彩色区域的边界出来。</p><p><img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/边缘算子.png" alt="边缘算子"></p><p><strong>3.k-cochain、k-form、微分算子？</strong></p><p><strong><img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/kform.png" alt="kform"></strong></p><p>​   给定一个二维单纯复形，在这上面定义一个1-form（又称1-cochain）$w$，$w$实际上是一个线性函数，它的作用是为每条半边赋值。那么微分算子对$w$作用一次，就得到一个$dw$，也就是一个2-form，在这上面还可以定义一个0-form，记为$f$，那么它的作用就是为每个顶点赋值。同理$df$为一个1-form。</p><p><strong>4.如下图，为什么积分不为0，$w$就是不恰当的？</strong>（第三节课的开头讲到）<img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/判断是否恰当.png" alt="判断是否恰当"></p><p>原因是这样的，$w$<code>恰当，当且仅当存在一个0维上链，也就是0-form</code>。假设$w$恰当，那么必定有$w=df$</p><p>那么将其带入上面那个积分，由于gama是一个闭环，所以得到$f(b)-f(a)=0$，这与积分=18相矛盾，因此$w$是不恰当的。</p>]]></content>
-      
-      
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算共形几何笔记(2)</title>
+    <url>/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/</url>
+    <content><![CDATA[<p>本次以及以后的笔记都记录一些一开始不懂的，后来懂了的知识。本来打算用学数学的方法去学习，但是这些定理以及公式实在是晦涩难懂，所以我就用自己的话来写写，做到直觉上的理解是我的最大目标。</p>
+<h4 id="一、第一次作业总结"><a href="#一、第一次作业总结" class="headerlink" title="一、第一次作业总结"></a>一、第一次作业总结</h4><p>​   第一次作业是一个程序填空，要求是输入一个三角剖分好的网格，然后在这个网格上计算割图。做作业时感觉难点在于，要把概念上的对偶和实际程序中定义的对偶区分开来，概念上的对偶网格指的是，找到每一个三角形的中心，然后分别把这些中心连接起来，这样原来的点就变成一个面，原来的面变成一个点，边还是边。但是在求对偶网格的程序实现中，虽然概念上面变成点了，但程序中仍然以三角形来代表点，这样的话，在计算对偶网格的生成树时，就是广度优先遍历每一个三角形，生成树的每一个节点都是三角形，根据半边结构，一个三角形到相邻三角形只有一条路径，那就是它们的邻接边，也就是生成树中的树枝。</p>
+<h4 id="二、第二次作业总结"><a href="#二、第二次作业总结" class="headerlink" title="二、第二次作业总结"></a>二、第二次作业总结</h4><p>​   第二次作业是在求一个调和映射，目前我还不懂什么叫调和映射，从直观上来说，就是把一个曲面映射到一个单位圆上，映射后原来曲面的局部形状仍然保持，例如下图，整体形状发生了变化，但眼睛、鼻子等仍保持原状。为什么需要这么一个映射呢，目前还不清楚…</p>
+<a id="more"></a>
+<p><img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/调和映射.png" alt="调和映射"></p>
+<p>​   这个算法实质上是在解一个几何偏微分方程（目前不懂），提供了两种方法，一种是迭代法，一种是直接法。迭代法在我电脑上跑了半个多小时，应该是代码没有写好。我只做了迭代法，直接法不会做…需要到群里请教。</p>
+<h4 id="三、一些琐碎的知识点"><a href="#三、一些琐碎的知识点" class="headerlink" title="三、一些琐碎的知识点"></a>三、一些琐碎的知识点</h4><p><strong>1.为什么说图不可以缩成一个点？</strong></p>
+<p>​   因为要想缩成一个点，一定要有一个依附的东西，例如曲面上、平面上的一个环，可以缩成一个点，图并不是这样的结构，所以它无法缩成一个点。</p>
+<p><strong>2.什么是边缘算子？</strong></p>
+<p>​   直观上来说，边缘算子就是剥离出每个链的边界，例如把大卫脸上的彩色区域的边界出来。</p>
+<p><img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/边缘算子.png" alt="边缘算子"></p>
+<p><strong>3.k-cochain、k-form、微分算子？</strong></p>
+<p><strong><img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/kform.png" alt="kform"></strong></p>
+<p>​   给定一个二维单纯复形，在这上面定义一个1-form（又称1-cochain）$w$，$w$实际上是一个线性函数，它的作用是为每条半边赋值。那么微分算子对$w$作用一次，就得到一个$dw$，也就是一个2-form，在这上面还可以定义一个0-form，记为$f$，那么它的作用就是为每个顶点赋值。同理$df$为一个1-form。</p>
+<p><strong>4.如下图，为什么积分不为0，$w$就是不恰当的？</strong>（第三节课的开头讲到）<img src="/2020/07/26/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-2/判断是否恰当.png" alt="判断是否恰当"></p>
+<p>原因是这样的，$w$<code>恰当，当且仅当存在一个0维上链，也就是0-form</code>。假设$w$恰当，那么必定有$w=df$</p>
+<p>那么将其带入上面那个积分，由于gama是一个闭环，所以得到$f(b)-f(a)=0$，这与积分=18相矛盾，因此$w$是不恰当的。</p>
+]]></content>
       <categories>
-          
-          <category> 数学 </category>
-          
+        <category>数学</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 笔记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>计算共形几何笔记(1)</title>
-      <link href="/2020/07/18/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/"/>
-      <url>/2020/07/18/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/</url>
-      
-        <content type="html"><![CDATA[<p>​   果不其然，这门课的难度远远超过我的承受能力。以前觉得高数难，觉得线代难，但是那种难，只是想不到思路，翻看答案还是能想通的，至少我觉得那是符合我的认知的。共形几何这门课，每一个知识点都很抽象，只有少部分可以有一个直观印象，大部分都是听不懂的，并且在我脑子里毫无逻辑可循。课程前言说，只需具备多元微积分、线性代数的基础即可，我真有点怀疑这要求是不太低了…</p><p>​   本来想做点笔记，可是这几节课听下来，似乎又没什么可记的，因为大部分内容没听懂，只能记一些直觉上理解了的东西了。作业做起来也有点费力，但是作业给了算法步骤，只需要写代码，作业难住我的还是C++…</p><p>​   不过，管它呢，难就难了，这是前沿学科，怎么可能不难。反正暑假漫长，可能这也是最后一个长时间的假期了，错过这个假期再也没机会纯粹的去学一门课。就算内容学不懂，至少在几何方面会有一些了解。就当作是一次快乐的游戏吧!   </p><p>​   作业一没什么记录的，作业二还没做完，作业二是一个求解几何偏微分方程的东西，这玩意儿目前也不懂，就先把算法流程搞清楚吧！课程内容方面的笔记下次再写。</p>]]></content>
-      
-      
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算共形几何笔记(1)</title>
+    <url>/2020/07/18/%E8%AE%A1%E7%AE%97%E5%85%B1%E5%BD%A2%E5%87%A0%E4%BD%95%E7%AC%94%E8%AE%B0-1/</url>
+    <content><![CDATA[<p>​   果不其然，这门课的难度远远超过我的承受能力。以前觉得高数难，觉得线代难，但是那种难，只是想不到思路，翻看答案还是能想通的，至少我觉得那是符合我的认知的。共形几何这门课，每一个知识点都很抽象，只有少部分可以有一个直观印象，大部分都是听不懂的，并且在我脑子里毫无逻辑可循。课程前言说，只需具备多元微积分、线性代数的基础即可，我真有点怀疑这要求是不太低了…</p>
+<p>​   本来想做点笔记，可是这几节课听下来，似乎又没什么可记的，因为大部分内容没听懂，只能记一些直觉上理解了的东西了。作业做起来也有点费力，但是作业给了算法步骤，只需要写代码，作业难住我的还是C++…</p>
+<p>​   不过，管它呢，难就难了，这是前沿学科，怎么可能不难。反正暑假漫长，可能这也是最后一个长时间的假期了，错过这个假期再也没机会纯粹的去学一门课。就算内容学不懂，至少在几何方面会有一些了解。就当作是一次快乐的游戏吧!   </p>
+<p>​   作业一没什么记录的，作业二还没做完，作业二是一个求解几何偏微分方程的东西，这玩意儿目前也不懂，就先把算法流程搞清楚吧！课程内容方面的笔记下次再写。</p>
+]]></content>
       <categories>
-          
-          <category> 数学 </category>
-          
+        <category>数学</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 笔记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>绝对音高+多普勒效应可以测出直升机的速度？</title>
-      <link href="/2020/02/15/%E7%BB%9D%E5%AF%B9%E9%9F%B3%E9%AB%98-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E5%8F%AF%E4%BB%A5%E6%B5%8B%E5%87%BA%E7%9B%B4%E5%8D%87%E6%9C%BA%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9F/"/>
-      <url>/2020/02/15/%E7%BB%9D%E5%AF%B9%E9%9F%B3%E9%AB%98-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E5%8F%AF%E4%BB%A5%E6%B5%8B%E5%87%BA%E7%9B%B4%E5%8D%87%E6%9C%BA%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9F/</url>
-      
-        <content type="html"><![CDATA[<p>2017年在逛一个乐理论坛的时候发现了这个有趣的问题，当时只是觉得神奇，没有自己去验证是否是真的，在知乎上提了这个问题，2年多了也没人回答，我决定亲自验算。网友是这样描述的：</p><blockquote><p>哈哈，那我就是相对音高喽？我觉得我能记住几个特定的音高，比如钢琴的 do,mi,sol,do和弦，或者音叉的440hz,然后再把听到的声音推出来。哦对了，昨天有个直升机从教学楼顶轰鸣而过，先是降 la，然后变成了降mi，当场我就把计算器掏出来用多普勒效应算，我记得飞机是40多米每秒的速度。学音乐就是有用。</p><p><a href="https://bideyuanli.com/p/1304" target="_blank" rel="noopener">原文链接</a></p></blockquote><p>验算之前，先大概了解一下绝对音高和相对音高这两个东西：</p><blockquote><p><code>绝对音高</code>：是指人可以在没有外部参考的情况下，迅速而准确地说出或发出一个特定的音高。</p><p><code>相对音高</code>：绝对音高的对称。必须在有所依据（指音叉或比较音高）的条件下，凭比较和记忆来听辨各音的准确高度。</p></blockquote><p>声音是通过振动产生的，有振动就有频率。音乐中每一个音名都对应一个频率（原谅我对乐理知识的欠缺，不敢说得详细）。</p><p>再来说一下多普勒效应，多普勒效应在生活中非常普遍，比如说呼啸而过的火车音高的变化，可以<a href="https://baike.baidu.com/item/十二平均律/592297?fr=aladdin" target="_blank" rel="noopener">点这里体验</a>。</p><blockquote><p><code>多普勒效应</code>：物体辐射的波长因为波源和观测者的相对运动而产生变化。在运动的波源前面，波被压缩，波长变得较短，频率变得较高；在运动的波源后面时，会产生相反的效应。波长变得较长，频率变得较低；波源的速度越高，所产生的效应越大。</p></blockquote><p>多普勒效应对应公式：</p><a id="more"></a><blockquote><script type="math/tex; mode=display">f'=\frac{v\pm v_0}{v\mp v_s}f</script><script type="math/tex; mode=display">f'：观察到的频率</script><script type="math/tex; mode=display">f:发射源于该介质中的原始发射频率</script><script type="math/tex; mode=display">v:波在该介质中的行进速度</script><script type="math/tex; mode=display">v_0:观察者移动速度，若接近发射源则前方运算符号为 + 号, 反之则为 - 号</script><script type="math/tex; mode=display">v_s:发射源移动速度，若接近观察者则前方运算符号为 - 号，反之则为 + 号</script></blockquote><p>有了上述准备，就可以开始进行验算了：</p><p>假设我具有绝对音高这种逆天能力，有一天我在房顶上晒着太阳哼着歌，一架直升机呼啸而来又呼啸而去，我淡淡一笑，默默的掏出手机记下了来去之间的两个音：降la和降mi。根据多普勒效应，直升机靠近我的时候是降la，远离我时是降mi，假设直升机是匀速飞行，到网上可以查到降la的频率为830.609Hz <em> k,降mi的频率为622.254Hz </em> k,至于为什么要乘以一个k，那是因为我并不能听出来这个音是位于哪个位置的音，看下图：</p><p><img src="/source/images/1.jpg" alt></p><p>由于我的听音能力并不是那么的强，我不能确定这个降la和降mi是位于哪个区的降la和降mi，我只能确定降la和降mi位于同一区域，好在这些音之间，他们的频率存在比例，比如大字组的降mi频率=大字一组的降mi频率*2。</p><p>所以就可以得到以下两个式子：</p><script type="math/tex; mode=display">f'_1*k=\frac{v- v_0}{v+ v_s}f\tag{1}</script><script type="math/tex; mode=display">f'_2*k=\frac{v- v_0}{v+ v_s}f\tag{2}</script><script type="math/tex; mode=display">v_0 = 0;v_s = 340m/s(声音在空气中的传播速度)</script><p>将（1）（2）两式作比值，消去f和k，解得</p><script type="math/tex; mode=display">v_s = 48.76m/s\tag{3}</script><p>经查询，民用直升机的飞行速度为：</p><script type="math/tex; mode=display">41m/s—69m/s\tag{4}</script><p>48.76完美的落在了这个区间，嘿嘿！</p><p>后续我打算用chunk语言进行一个多普勒效应模拟，敬请期待！</p>]]></content>
-      
-      
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>绝对音高+多普勒效应可以测出直升机的速度？</title>
+    <url>/2020/02/15/%E7%BB%9D%E5%AF%B9%E9%9F%B3%E9%AB%98-%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94%E5%8F%AF%E4%BB%A5%E6%B5%8B%E5%87%BA%E7%9B%B4%E5%8D%87%E6%9C%BA%E7%9A%84%E9%80%9F%E5%BA%A6%EF%BC%9F/</url>
+    <content><![CDATA[<p>2017年在逛一个乐理论坛的时候发现了这个有趣的问题，当时只是觉得神奇，没有自己去验证是否是真的，在知乎上提了这个问题，2年多了也没人回答，我决定亲自验算。网友是这样描述的：</p>
+<blockquote>
+<p>哈哈，那我就是相对音高喽？我觉得我能记住几个特定的音高，比如钢琴的 do,mi,sol,do和弦，或者音叉的440hz,然后再把听到的声音推出来。哦对了，昨天有个直升机从教学楼顶轰鸣而过，先是降 la，然后变成了降mi，当场我就把计算器掏出来用多普勒效应算，我记得飞机是40多米每秒的速度。学音乐就是有用。</p>
+<p><a href="https://bideyuanli.com/p/1304" target="_blank" rel="noopener">原文链接</a></p>
+</blockquote>
+<p>验算之前，先大概了解一下绝对音高和相对音高这两个东西：</p>
+<blockquote>
+<p><code>绝对音高</code>：是指人可以在没有外部参考的情况下，迅速而准确地说出或发出一个特定的音高。</p>
+<p><code>相对音高</code>：绝对音高的对称。必须在有所依据（指音叉或比较音高）的条件下，凭比较和记忆来听辨各音的准确高度。</p>
+</blockquote>
+<p>声音是通过振动产生的，有振动就有频率。音乐中每一个音名都对应一个频率（原谅我对乐理知识的欠缺，不敢说得详细）。</p>
+<p>再来说一下多普勒效应，多普勒效应在生活中非常普遍，比如说呼啸而过的火车音高的变化，可以<a href="https://baike.baidu.com/item/十二平均律/592297?fr=aladdin" target="_blank" rel="noopener">点这里体验</a>。</p>
+<blockquote>
+<p><code>多普勒效应</code>：物体辐射的波长因为波源和观测者的相对运动而产生变化。在运动的波源前面，波被压缩，波长变得较短，频率变得较高；在运动的波源后面时，会产生相反的效应。波长变得较长，频率变得较低；波源的速度越高，所产生的效应越大。</p>
+</blockquote>
+<p>多普勒效应对应公式：</p>
+<a id="more"></a>
+<blockquote>
+<script type="math/tex; mode=display">
+f'=\frac{v\pm v_0}{v\mp v_s}f</script><script type="math/tex; mode=display">
+f'：观察到的频率</script><script type="math/tex; mode=display">
+f:发射源于该介质中的原始发射频率</script><script type="math/tex; mode=display">
+v:波在该介质中的行进速度</script><script type="math/tex; mode=display">
+v_0:观察者移动速度，若接近发射源则前方运算符号为 + 号, 反之则为 - 号</script><script type="math/tex; mode=display">
+v_s:发射源移动速度，若接近观察者则前方运算符号为 - 号，反之则为 + 号</script></blockquote>
+<p>有了上述准备，就可以开始进行验算了：</p>
+<p>假设我具有绝对音高这种逆天能力，有一天我在房顶上晒着太阳哼着歌，一架直升机呼啸而来又呼啸而去，我淡淡一笑，默默的掏出手机记下了来去之间的两个音：降la和降mi。根据多普勒效应，直升机靠近我的时候是降la，远离我时是降mi，假设直升机是匀速飞行，到网上可以查到降la的频率为830.609Hz <em> k,降mi的频率为622.254Hz </em> k,至于为什么要乘以一个k，那是因为我并不能听出来这个音是位于哪个位置的音，看下图：</p>
+<p><img src="/source/images/1.jpg" alt></p>
+<p>由于我的听音能力并不是那么的强，我不能确定这个降la和降mi是位于哪个区的降la和降mi，我只能确定降la和降mi位于同一区域，好在这些音之间，他们的频率存在比例，比如大字组的降mi频率=大字一组的降mi频率*2。</p>
+<p>所以就可以得到以下两个式子：</p>
+<script type="math/tex; mode=display">
+f'_1*k=\frac{v- v_0}{v+ v_s}f\tag{1}</script><script type="math/tex; mode=display">
+f'_2*k=\frac{v- v_0}{v+ v_s}f\tag{2}</script><script type="math/tex; mode=display">
+v_0 = 0;v_s = 340m/s(声音在空气中的传播速度)</script><p>将（1）（2）两式作比值，消去f和k，解得</p>
+<script type="math/tex; mode=display">
+v_s = 48.76m/s\tag{3}</script><p>经查询，民用直升机的飞行速度为：</p>
+<script type="math/tex; mode=display">
+41m/s—69m/s\tag{4}</script><p>48.76完美的落在了这个区间，嘿嘿！</p>
+<p>后续我打算用chunk语言进行一个多普勒效应模拟，敬请期待！</p>
+]]></content>
       <categories>
-          
-          <category> 有趣的事情 </category>
-          
+        <category>有趣的事情</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hexo与markdown使用总结</title>
-      <link href="/2020/02/14/Hexo%E4%B8%8Emarkdown%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
-      <url>/2020/02/14/Hexo%E4%B8%8Emarkdown%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
-      
-        <content type="html"><![CDATA[<p>使用博客，首先要打开命令行，切换到博客文件夹下。</p><p>如何新建文章？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 文章标题</span><br></pre></td></tr></table></figure><p>如何上传修改后的博客？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><a id="more"></a><p>如何打出上下角标？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">上标：A（小于号）sup（大于号）2（小于号）&#x2F;sup（大于号）</span><br><span class="line">下标：sup换成sub</span><br><span class="line">&#x2F;&#x2F;用markdown语法的~A...这个会报错，原因我也不清楚</span><br></pre></td></tr></table></figure><p>其他的想到再补充</p>]]></content>
-      
-      
+  </entry>
+  <entry>
+    <title>Hexo与markdown使用总结</title>
+    <url>/2020/02/14/Hexo%E4%B8%8Emarkdown%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>使用博客，首先要打开命令行，切换到博客文件夹下。</p>
+<p>如何新建文章？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new 文章标题</span><br></pre></td></tr></table></figure>
+<p>如何上传修改后的博客？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>如何打出上下角标？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上标：A（小于号）sup（大于号）2（小于号）&#x2F;sup（大于号）</span><br><span class="line">下标：sup换成sub</span><br><span class="line">&#x2F;&#x2F;用markdown语法的~A...这个会报错，原因我也不清楚</span><br></pre></td></tr></table></figure>
+<p>其他的想到再补充</p>
+]]></content>
       <categories>
-          
-          <category> 杂谈 </category>
-          
+        <category>杂谈</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 博客 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>最小自然数原理证明数学归纳法</title>
-      <link href="/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/"/>
-      <url>/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>从逻辑的观点来说，注意到下面一点是很有趣的，即可以用最小自然数原理把数学归纳法当作一个定理来证明。对此让我们考虑任意一系列命题A<sub>1</sub>,A<sub>2</sub>,A<sub>3</sub>…,使得</p><ol><li>对任一正整数r, A<sub>r</sub>为真时能推出A<sub>r+1</sub>也为真;</li><li>已知A<sub>1</sub>为真。</li></ol><p>我们将表明:“这些A中有一个不为真”这一假设是不对的。因为只要这些A中有一个不为真，则使得A<sub>n</sub>不为真的全体正整数集C就是不空的。按最小自然数原理，C包含一最小整数p，由2知p必须&gt;1。因此A不为真，但A<sub>p-1</sub>为真。这与1矛盾</p></blockquote><p>这是<code>《什么是数学》</code>一书中提到的一个问题，前段时间读到这里的时候，总觉得这段话读起来很拗口，今天终于想明白了，在梳理思路之前要先了解最小自然数原理和数学归纳法：<br><a id="more"></a></p><blockquote><p><code>最小自然数原理</code>：1.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最小数；2.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最大数。</p><p><code>数学归纳法</code>：1.证明当n = 1时命题成立。</p><p>​                      2.假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立（m是任意自然数）</p><p>​                      3.上面两步证明完毕后，即可推出对n取任意自然数时命题均成立。</p></blockquote><p>第一次学数学归纳法的时候，从直觉上来说感觉数学归纳法是自然成立的，但在数学上是需要证明的。下面对书中的证明过程做一些通俗的解释：</p><p>当我在使用数学归纳法证明命题时，我经历了这样一个过程：</p><ol><li>我证明了n=1时命题成立</li><li>我证明了“假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立”</li><li>于是按照数学归纳法的步骤，我得出了所有命题均成立的结论。</li></ol><p>但是，所有命题一定都成立吗？直觉上来说是的，这就像是一套多米诺骨牌，我保证第一块牌一定可以倒下，我也能保证只要第n块牌倒下了，第n+1块牌也能倒下，于是，不管有多少块骨牌，它们都能倒下。但是，在数学上不能靠这种依靠直觉的方式去证明，不能通过有限的列举去证明无限的命题。<strong>所以应该通过否定有限去肯定无限的方法：</strong></p><p>假设对于某些n，数学归纳法不成立，那么，这里面一定存在一个最小的数p，使得结论不成立（这里用到了最小自然数原理）。由于已知n=1时结论成立，因此P一定大于1，但当n=p时，结论恰好从这里开始就不成立了，那么往前一个位置n=p-1时，结论一定是成立的。所以这就与我们在数学归纳法中已经证明的第2步不符了，由此说明数学归纳法证明了所有命题均是真的。</p>]]></content>
-      
-      
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最小自然数原理证明数学归纳法</title>
+    <url>/2020/02/12/%E6%9C%80%E5%B0%8F%E8%87%AA%E7%84%B6%E6%95%B0%E5%8E%9F%E7%90%86%E8%AF%81%E6%98%8E%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95/</url>
+    <content><![CDATA[<blockquote>
+<p>从逻辑的观点来说，注意到下面一点是很有趣的，即可以用最小自然数原理把数学归纳法当作一个定理来证明。对此让我们考虑任意一系列命题A<sub>1</sub>,A<sub>2</sub>,A<sub>3</sub>…,使得</p>
+<ol>
+<li>对任一正整数r, A<sub>r</sub>为真时能推出A<sub>r+1</sub>也为真;</li>
+<li>已知A<sub>1</sub>为真。</li>
+</ol>
+<p>我们将表明:“这些A中有一个不为真”这一假设是不对的。因为只要这些A中有一个不为真，则使得A<sub>n</sub>不为真的全体正整数集C就是不空的。按最小自然数原理，C包含一最小整数p，由2知p必须&gt;1。因此A不为真，但A<sub>p-1</sub>为真。这与1矛盾</p>
+</blockquote>
+<p>这是<code>《什么是数学》</code>一书中提到的一个问题，前段时间读到这里的时候，总觉得这段话读起来很拗口，今天终于想明白了，在梳理思路之前要先了解最小自然数原理和数学归纳法：<br><a id="more"></a></p>
+<blockquote>
+<p><code>最小自然数原理</code>：1.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最小数；2.设R是全体实数组成的集合，T是R的有限非空子集，则T中必有最大数。</p>
+<p><code>数学归纳法</code>：1.证明当n = 1时命题成立。</p>
+<p>​                      2.假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立（m是任意自然数）</p>
+<p>​                      3.上面两步证明完毕后，即可推出对n取任意自然数时命题均成立。</p>
+</blockquote>
+<p>第一次学数学归纳法的时候，从直觉上来说感觉数学归纳法是自然成立的，但在数学上是需要证明的。下面对书中的证明过程做一些通俗的解释：</p>
+<p>当我在使用数学归纳法证明命题时，我经历了这样一个过程：</p>
+<ol>
+<li>我证明了n=1时命题成立</li>
+<li>我证明了“假设n=m时命题成立，那么可以推导出在n=m+1时命题也成立”</li>
+<li>于是按照数学归纳法的步骤，我得出了所有命题均成立的结论。</li>
+</ol>
+<p>但是，所有命题一定都成立吗？直觉上来说是的，这就像是一套多米诺骨牌，我保证第一块牌一定可以倒下，我也能保证只要第n块牌倒下了，第n+1块牌也能倒下，于是，不管有多少块骨牌，它们都能倒下。但是，在数学上不能靠这种依靠直觉的方式去证明，不能通过有限的列举去证明无限的命题。<strong>所以应该通过否定有限去肯定无限的方法：</strong></p>
+<p>假设对于某些n，数学归纳法不成立，那么，这里面一定存在一个最小的数p，使得结论不成立（这里用到了最小自然数原理）。由于已知n=1时结论成立，因此P一定大于1，但当n=p时，结论恰好从这里开始就不成立了，那么往前一个位置n=p-1时，结论一定是成立的。所以这就与我们在数学归纳法中已经证明的第2步不符了，由此说明数学归纳法证明了所有命题均是真的。</p>
+]]></content>
       <categories>
-          
-          <category> 数学 </category>
-          
+        <category>数学</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>QTwebsocket向前端发送字节流与前端解析(测试博文)</title>
-      <link href="/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/"/>
-      <url>/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/</url>
-      
-        <content type="html"><![CDATA[<p>最近在写一个代码，实现前后端数据实时交互。后端开发使用QT的Qwebsocket模块。本来想使用json来收发数据，前后端解析起来也很方便，但是不知道json的效率会怎样，决定使用字节流来向前端发送数据。经过几天的探索，终于找到了方法，先上代码：</p><p>1，后端部分代码如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> nVersion = <span class="number">1.12345678917</span>;</span><br><span class="line"><span class="keyword">double</span> dblValue = <span class="number">125.00008</span>;</span><br><span class="line">QByteArray baResult;<span class="comment">//串行化的流</span></span><br><span class="line"><span class="function">QDataStream <span class="title">dsOut</span><span class="params">(&amp;baResult, QIODevice::ReadWrite)</span></span>;  /作输出</span><br><span class="line">dsOut.setVersion(QDataStream::Qt_5_0);<span class="comment">//使用Qt 5.0 版本流</span></span><br><span class="line">dsOut&lt;&lt;nVersion&lt;&lt;dblValue;</span><br><span class="line">pClient-&gt;sendBinaryMessage(baResult);<span class="comment">//向前端发送baResult</span></span><br></pre></td></tr></table></figure></p><p>2，前端代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">websocket.onmessage = function (evt) &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">   reader.readAsArrayBuffer(evt.data);</span><br><span class="line">   reader.onload = function (e) &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">var</span> dataview = <span class="keyword">new</span> DataView(reader.result);</span><br><span class="line">   <span class="keyword">var</span> doubles = <span class="keyword">new</span> Float64Array(reader.result.byteLength / <span class="number">8</span>)</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; doubles.length; i++) &#123;</span><br><span class="line">          </span><br><span class="line">          doubles[i] = dataview.getFloat64(i * <span class="number">8</span>); <span class="comment">// 每次提取一个double</span></span><br><span class="line">          alert(doubles[i])</span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><a id="more"></a></p><p>后端使用QDataStream进行串行化，得到一个QByteArray类型的变量，将其发给前端，从前端可以很容易地看出收到的数据类型是Blob类型，所以我们还要将Blob类型转为ArrayBuffer类型。关于ArrayBuffer的资料网上很多很多，这里就不提了。大致的意思就是：因为一个double类型占8个字节，所以我们按照8个8个来取，这样就能提取数据了。同样的，读者可以试试取出int型或者double、int混合起来的数据。至于效率究竟有没有json高，我还得研究一下。</p>]]></content>
-      
-      
+  </entry>
+  <entry>
+    <title>QTwebsocket向前端发送字节流与前端解析(测试博文)</title>
+    <url>/2020/02/12/QTwebsocket%E5%90%91%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E5%AD%97%E8%8A%82%E6%B5%81%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%A7%A3%E6%9E%90-%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87/</url>
+    <content><![CDATA[<p>最近在写一个代码，实现前后端数据实时交互。后端开发使用QT的Qwebsocket模块。本来想使用json来收发数据，前后端解析起来也很方便，但是不知道json的效率会怎样，决定使用字节流来向前端发送数据。经过几天的探索，终于找到了方法，先上代码：</p>
+<p>1，后端部分代码如下：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> nVersion = <span class="number">1.12345678917</span>;</span><br><span class="line"><span class="keyword">double</span> dblValue = <span class="number">125.00008</span>;</span><br><span class="line">QByteArray baResult;<span class="comment">//串行化的流</span></span><br><span class="line"><span class="function">QDataStream <span class="title">dsOut</span><span class="params">(&amp;baResult, QIODevice::ReadWrite)</span></span>;  /作输出</span><br><span class="line">dsOut.setVersion(QDataStream::Qt_5_0);<span class="comment">//使用Qt 5.0 版本流</span></span><br><span class="line">dsOut&lt;&lt;nVersion&lt;&lt;dblValue;</span><br><span class="line">pClient-&gt;sendBinaryMessage(baResult);<span class="comment">//向前端发送baResult</span></span><br></pre></td></tr></table></figure></p>
+<p>2，前端代码：<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">websocket.onmessage = function (evt) &#123;</span><br><span class="line">			</span><br><span class="line">	<span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">   	reader.readAsArrayBuffer(evt.data);</span><br><span class="line">   	reader.onload = function (e) &#123;</span><br><span class="line">   				</span><br><span class="line">   		<span class="keyword">var</span> dataview = <span class="keyword">new</span> DataView(reader.result);</span><br><span class="line">   		<span class="keyword">var</span> doubles = <span class="keyword">new</span> Float64Array(reader.result.byteLength / <span class="number">8</span>)</span><br><span class="line">   				</span><br><span class="line">   		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; doubles.length; i++) &#123;</span><br><span class="line">          		</span><br><span class="line">          	doubles[i] = dataview.getFloat64(i * <span class="number">8</span>); <span class="comment">// 每次提取一个double</span></span><br><span class="line">          	alert(doubles[i])</span><br><span class="line">        &#125; </span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><a id="more"></a></p>
+<p>后端使用QDataStream进行串行化，得到一个QByteArray类型的变量，将其发给前端，从前端可以很容易地看出收到的数据类型是Blob类型，所以我们还要将Blob类型转为ArrayBuffer类型。关于ArrayBuffer的资料网上很多很多，这里就不提了。大致的意思就是：因为一个double类型占8个字节，所以我们按照8个8个来取，这样就能提取数据了。同样的，读者可以试试取出int型或者double、int混合起来的数据。至于效率究竟有没有json高，我还得研究一下。</p>
+]]></content>
       <categories>
-          
-          <category> 技术 </category>
-          
+        <category>技术</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> C++ </tag>
-            
-            <tag> websocket </tag>
-            
-            <tag> 数据交互 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>你会重构你写的第一个游戏吗</title>
-      <link href="/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/"/>
-      <url>/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/</url>
-      
-        <content type="html"><![CDATA[<p>不<br><a id="more"></a></p><p><a href="https://casenoone.github.io/mini-games1/html/%E5%88%86%E5%89%B2%E7%90%83%E7%90%83.html">https://casenoone.github.io/mini-games1/html/%E5%88%86%E5%89%B2%E7%90%83%E7%90%83.html</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>C++</tag>
+        <tag>websocket</tag>
+        <tag>数据交互</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>你会重构你写的第一个游戏吗</title>
+    <url>/2020/02/12/%E4%BD%A0%E5%BF%8D%E5%BF%83%E9%87%8D%E6%9E%84%E4%BD%A0%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E5%90%97/</url>
+    <content><![CDATA[<p>不<br><a id="more"></a></p>
+<p><a href="https://casenoone.github.io/mini-games1/html/%E5%88%86%E5%89%B2%E7%90%83%E7%90%83.html">https://casenoone.github.io/mini-games1/html/%E5%88%86%E5%89%B2%E7%90%83%E7%90%83.html</a></p>
+]]></content>
       <categories>
-          
-          <category> 游戏 </category>
-          
+        <category>游戏</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 游戏 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>写给23岁</title>
-      <link href="/2020/02/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
-      <url>/2020/02/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
-      
-        <content type="html"><![CDATA[<p>有好几个月没有更新博客了！</p><p>这篇文章本来是在2月12号要写的，结果一直拖到今天。但是2月12号是个值得纪念的日子，因为这一天我搭建好了我的博客，哈哈哈。所以，文章发表日期不改了，但要知道，这篇文章是写于2020年6月11号。</p><p>23岁，我收到的最好的两件礼物，就是本科毕业，还有考研上岸。我还记得大一上学期的时候，我在图书馆二楼的计算机室，看着那些让我羡慕的知识和技术，心里只能感叹：唉，以后只能去挖煤了。命运弄人，大二的一次偶然，被同学拉到老师那儿去，阴差阳错的就敲起了代码。我同学，还有我老师，是我生命中的贵人。</p><p>19岁到23岁，这四年变化太大了。最大的改变就是对知识的态度。以前我从来不会想过，我会对一个频繁使用到数学的学科产生兴趣。我一直也不够自信，觉得自己理科思维不好，不适合学数学。但是现在，我会说，呵呵，老子开心就好！</p><p>懒得回顾过去四年了，我就回顾最近一年的事情。</p><p>过去一年大部分时间在备考，感悟只有一个字：累！其他的也不想写了。最近半年，心态也发生了变化，自从开始练习正念冥想，看了哈佛积极心理学之后，整个人的变化特别大。希望未来能够坚持下去。</p><p>23岁对我来说太重要了，这是我人生中的一个转折点。跨考到计算机，就意味着能够有一个专业的环境去学习，在那里我的进步会非常快！</p><p>就写这么多了。研究生的目标很简单，要成为一个很厉害的人，就这样！</p>]]></content>
-      
-      
+      <tags>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>写给23岁</title>
+    <url>/2020/02/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>有好几个月没有更新博客了！</p>
+<p>这篇文章本来是在2月12号要写的，结果一直拖到今天。但是2月12号是个值得纪念的日子，因为这一天我搭建好了我的博客，哈哈哈。所以，文章发表日期不改了，但要知道，这篇文章是写于2020年6月11号。</p>
+<p>23岁，我收到的最好的两件礼物，就是本科毕业，还有考研上岸。我还记得大一上学期的时候，我在图书馆二楼的计算机室，看着那些让我羡慕的知识和技术，心里只能感叹：唉，以后只能去挖煤了。命运弄人，大二的一次偶然，被同学拉到老师那儿去，阴差阳错的就敲起了代码。我同学，还有我老师，是我生命中的贵人。</p>
+<p>19岁到23岁，这四年变化太大了。最大的改变就是对知识的态度。以前我从来不会想过，我会对一个频繁使用到数学的学科产生兴趣。我一直也不够自信，觉得自己理科思维不好，不适合学数学。但是现在，我会说，呵呵，老子开心就好！</p>
+<p>懒得回顾过去四年了，我就回顾最近一年的事情。</p>
+<p>过去一年大部分时间在备考，感悟只有一个字：累！其他的也不想写了。最近半年，心态也发生了变化，自从开始练习正念冥想，看了哈佛积极心理学之后，整个人的变化特别大。希望未来能够坚持下去。</p>
+<p>23岁对我来说太重要了，这是我人生中的一个转折点。跨考到计算机，就意味着能够有一个专业的环境去学习，在那里我的进步会非常快！</p>
+<p>就写这么多了。研究生的目标很简单，要成为一个很厉害的人，就这样！</p>
+]]></content>
       <categories>
-          
-          <category> 杂谈 </category>
-          
+        <category>杂谈</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-  
-  
+  </entry>
 </search>
