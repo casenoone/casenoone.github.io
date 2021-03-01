@@ -66,7 +66,7 @@
 \boldsymbol{J}=\left(                   \begin{array}{ccc}       \boldsymbol{J}_{ii} & \boldsymbol{J}_{ij} \\     \boldsymbol{J}_{ji} & \boldsymbol{J}_{jj} \\        \end{array}\right)\tag{10}</script><p><strong>四、数值方法的简单介绍</strong></p>
 <p>至此，我们就可以着手去解这个线性方程组了。本人在数值计算方法方面的学习一拖再拖，还没学多少，只知道可以用<strong>Jacobi method</strong>、<strong>Gauss–Seidel Method</strong>、<strong>Gradient Descent Method</strong>等。关于这些算法网上有大量资料，这里就懒得写了。</p>
 <p><strong>五、程序验证</strong></p>
-<p>用pixi.js做弹簧的可视化，实现了弹簧质点系统的显式方法，代码地址：<a href="https://github.com/casenoone/2D-mass-spring-system，在线demo：https://casenoone.github.io/2D-mass-spring-system/html/mass-spring.html" target="_blank" rel="noopener">https://github.com/casenoone/2D-mass-spring-system，在线demo：https://casenoone.github.io/2D-mass-spring-system/html/mass-spring.html</a></p>
+<p>用pixi.js做弹簧的可视化，实现了弹簧质点系统的显式方法<br>代码地址：<a href="https://github.com/casenoone/2D-mass-spring-system" target="_blank" rel="noopener">https://github.com/casenoone/2D-mass-spring-system</a><br>在线demo：<a href="https://casenoone.github.io/2D-mass-spring-system/html/mass-spring.html">https://casenoone.github.io/2D-mass-spring-system/html/mass-spring.html</a></p>
 <p>本文推导的隐式积分法的程序正在coding中…</p>
 <p><strong>六、总结</strong></p>
 <p>本文主要参考Games201第二讲、Miles Macklin博客里的文章《implict springs》、Matthias Muller等人的《Real Time Physics Class Notes》,其中貌似发现《Real Time Physics Class Notes》里 的一个公式推导的错误，第17页的公式3.32多除了一个$l^2$。</p>
