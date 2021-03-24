@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>对物质导数与拉格朗日视角、欧拉视角之间的关系的粗浅理解</title>
+    <url>/2021/03/24/%E5%AF%B9%E7%89%A9%E8%B4%A8%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E8%A7%86%E8%A7%92%E3%80%81%E6%AC%A7%E6%8B%89%E8%A7%86%E8%A7%92%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%E7%9A%84%E7%B2%97%E6%B5%85%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>之前有一个没怎么注意到的疑问，在拉格朗日视角和欧拉视角中，分别有不同形式的N-S方程（或者叫动量方程），拉格朗日视角中是这样的：</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{D}\boldsymbol{u}}{\mathrm{D}{t}}=-\frac{1}{\rho}\nabla+\nu\nabla\cdot{\nabla}\boldsymbol{u}+\boldsymbol{g}\tag{1}</script><p>欧拉视角中是这样的：</p>
+<script type="math/tex; mode=display">
+\frac{\partial{\boldsymbol{u}}}{\partial{t}}=-(\boldsymbol{u}\cdot{\nabla})\boldsymbol{u}-\frac{1}{\rho}\nabla{p}+\nu\nabla\cdot{\nabla}\boldsymbol{u}+\boldsymbol{g}\tag{2}</script><p>为什么在拉格朗日方法中使用物质导数，而欧拉法中使用偏导数呢？这里就涉及到对物质导数的理解，关于物质导数的具体推导，安德森的《计算流体力学》的第二章里讲得非常详细。这里记录一下物质导数的物理意义。<br><a id="more"></a><br>首先，假设你在爬山，考虑你所感受到的气温，从时间方面来考虑，中午的温度比早上高；从空间方面来考虑，山脚的气温比山顶的气温高。当从拉格朗日视角来看时，你从一处爬到另一处，温度变化不仅由于你的位置的移动，也取决于时间的变化；而从欧拉视角来看，空间中的每一个点都是固定的，所以位置不会发生改变，但是时间会变化。这就是物质导数的物理意义。</p>
+<p>实际上物质导数就是全导数，符号$D$与$d$是同样的意义。对于公式（2）来说，把等式右边第一项移到左边去，得到的就是物质导数的具体表达式。</p>
+<p>所以在games201欧拉视角那节课中的一个疑问，在求advection的时候，为什么说$\frac{\mathrm{D}\boldsymbol{u}}{\mathrm{D}{t}}=0$,其实就是把(2)式右边第一项移过去，用split的思想去一项一项的解方程。</p>
+]]></content>
+      <categories>
+        <category>物理模拟</category>
+      </categories>
+      <tags>
+        <tag>流体</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2D弹簧质点系统的隐式求解</title>
     <url>/2021/03/01/2D%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%9A%90%E5%BC%8F%E6%B1%82%E8%A7%A3/</url>
     <content><![CDATA[<p><strong>2D弹簧质点系统的隐式求解</strong></p>
