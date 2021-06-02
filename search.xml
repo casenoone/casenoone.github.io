@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>对坐标系转换的理解</title>
+    <url>/2021/06/02/%E5%AF%B9%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p><strong>对坐标系转换的理解</strong></p>
+<p>经常用到坐标系转换，例如在写sph的时候，为了方便映射邻近搜索网格，把世界坐标系的原点定在OpenGL窗口的左下角，x、y轴的朝向与OpenGL窗口坐标系方向一致，由于方向一致，处理平移即可。有时还有方向不一致的情况，例如想通过鼠标点击窗口的方式添加粒子，鼠标的坐标系为：原点在窗口左上角，x向右，y向下，那么绘制的时候就需要转为OpenGL的坐标。之前每次遇到这个问题，都是乱思考一通，今天从旋转矩阵来思考这个问题。</p>
+<p>只考虑2D情况，3D情况也很容易推广。</p>
+<p>下图中蓝色是世界坐标系，红色是局部坐标系。</p>
+<a id="more"></a>
+<p><img src="/2021/06/02/%E5%AF%B9%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2%E7%9A%84%E7%90%86%E8%A7%A3/transform.png" alt="transform"></p>
+<p>1.世界坐标系转局部坐标系：</p>
+<p>图中P点是世界坐标系下的坐标，$O^{‘}$为局部坐标系原点。首先求出向量$\boldsymbol{O^{}P}$,该向量为世界坐标系下的向量，此时我们想象把世界坐标系按逆时针方向旋转$\phi$角度，即世界坐标系与局部坐标重合。由于向量的表示是由所在坐标系决定的，不同的基底（即坐标系）下有不同的表示，那么坐标系旋转之后，意味着该向量的基底旋转了，那么该向量也应该作同样的旋转。</p>
+<p>向量旋转之后，为新的世界坐标系下的表示，而新的世界坐标系与局部坐标系原点不同，但方向相同，在这种情况下，点的坐标不同，但向量的坐标是相同的，且由于向量的起点就在局部坐标系的原点上，故旋转后的$\boldsymbol{O^{}P}$实际上就是O点。旋转的过程可以用一个<code>旋转矩阵</code>来描述。</p>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">Vector2 <span class="title">Transform2::toLocal</span><span class="params">(<span class="keyword">const</span> Vector2&amp; pointInWorld)</span><span class="keyword">const</span> </span>&#123;</span><br><span class="line">	Vector2 xmt = pointInWorld - _translation;</span><br><span class="line">	<span class="function">Vector2 <span class="title">result</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">		_cosAngle * xmt.x() + _sinAngle * xmt.y(),</span></span></span><br><span class="line"><span class="function"><span class="params">		-_sinAngle * xmt.x() + _cosAngle * xmt.y()</span></span></span><br><span class="line"><span class="function"><span class="params">		)</span></span>;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>近期的一些写作计划</title>
     <url>/2021/05/29/%E8%BF%91%E6%9C%9F%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%99%E4%BD%9C%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<p>列举一些近期的写作计划：</p>
